@@ -1,10 +1,37 @@
-import { View, Text } from "react-native";
+import { Header } from '@components/Header'
+import { View, Text, TouchableOpacity } from 'react-native'
+import { Container, Botoes } from './styles'
+import { useNavigation } from '@react-navigation/native'
 
-export default function Home(){
-  return(
-    <View>
-      
-      <Text>Home</Text>
-    </View>
+export default function Home() {
+  const navigation = useNavigation();
+  function handleAnimais(){
+    navigation.navigate('animais')
+
+  }
+  function handleCadastroVacina(){
+    navigation.navigate('cadastroVacina')
+
+  }
+  
+  return (
+    <>
+      <Header />
+      <Container>
+        <Text>Home</Text>
+        <Botoes>
+          <Text>Cadastrar gados</Text>
+        </Botoes>
+        <Botoes onPress={handleCadastroVacina}>
+          <Text>Cadastrar vacinas</Text>
+        </Botoes>
+        <Botoes onPress={handleAnimais}>
+          <Text>Animais</Text>
+        </Botoes>
+        <Botoes>
+          <Text>Reprodução</Text>
+        </Botoes>
+      </Container>
+    </>
   )
 }

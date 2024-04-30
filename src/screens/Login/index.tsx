@@ -3,6 +3,7 @@ import { Image } from 'expo-image'
 import { Text, View, Button, TouchableOpacity } from 'react-native'
 import img_Boi from '@assets/pexels.png'
 import iconGoogle from '@assets/googleIcon.png'
+import { useNavigation } from '@react-navigation/native'
 import {
   Container,
   MainImg,
@@ -17,6 +18,11 @@ import {
 } from './styles'
 
 export default function Home() {
+  const navigation = useNavigation();
+  function handleHome(){
+    navigation.navigate('home')
+
+  }
   return (
     <Container>
       <MainImg source={img_Boi} />
@@ -24,7 +30,7 @@ export default function Home() {
         <NameTitulo>Seja Bem vindo!</NameTitulo>
         <NameSubTitulo>Como deseja acessar?</NameSubTitulo>
       </ContainerTitulo>
-      <ButtonGmail>
+      <ButtonGmail onPress={handleHome}>
         <ImgGoogle source={iconGoogle} />
         <ButtonGoogle>Entrar com o Google</ButtonGoogle>
       </ButtonGmail>
