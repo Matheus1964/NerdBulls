@@ -13,14 +13,19 @@ export default function Home() {
     navigation.navigate('cadastroVacina')
 
   }
+
+  function handleCadastroAnimais(){
+    navigation.navigate('cadastroAnimais')
+
+  }
   
   return (
     <>
       <Header />
       <Container>
         <Text>Home</Text>
-        <Botoes>
-          <Text>Cadastrar gados</Text>
+        <Botoes onPress={handleCadastroAnimais}>
+          <Text>Cadastrar Animais</Text>
         </Botoes>
         <Botoes onPress={handleCadastroVacina}>
           <Text>Cadastrar vacinas</Text>

@@ -5,6 +5,7 @@ export declare global {
       login: undefined;
       animais: undefined;
       cadastroVacina: undefined;
+      cadastroAnimais: undefined;
     }
   }
 }
