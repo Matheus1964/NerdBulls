@@ -27,6 +27,30 @@ export const ContainerItemForm = styled.View`
   width: 90%;
 `;
 
+export const CenteredView = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+`;
+
+export const ModalView = styled.View`
+  margin: 20px;
+  background-color: ${theme.COLORS.WHITE};
+  border-radius: 20px;
+  padding: 35px;
+  align-items: center;
+`;
+
+export const TouchableModal = styled.TouchableOpacity`
+  background-color: #2CB859;
+  border-radius: 3px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 20px;
+`;
+
 export const NameTitulo= styled.Text`
   color: black;
   font-size: ${theme.FONT_SIZE.XL};
