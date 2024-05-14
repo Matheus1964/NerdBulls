@@ -1,6 +1,6 @@
 import { Image } from "expo-image";
 import styled from "styled-components/native";
-export const Container = styled.View`
+export const BackToButton = styled.TouchableOpacity`
   width: 100%;
   flex-direction: row;
   padding-left: 15px;
