@@ -4,6 +4,7 @@ import Home from '@screens/home'
 import Animais from '@screens/animais'
 import CadastroVacina from '@screens/cadastroVacina'
 import CadastroAnimais from '@screens/cadastroAnimais'
+import ControlePeso from '@screens/controlePeso'
 
 const { Navigator, Screen } = createNativeStackNavigator()
 
@@ -16,6 +17,7 @@ export function AppRoutes() {
       <Screen name="animais" component={Animais} />
       <Screen name="cadastroVacina" component={CadastroVacina} />
       <Screen name="cadastroAnimais" component={CadastroAnimais} />
+      <Screen name="controlePeso" component={ControlePeso} />
       
     </Navigator>
   )
