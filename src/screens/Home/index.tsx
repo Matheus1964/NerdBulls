@@ -2,6 +2,7 @@ import { Header } from '@components/Header'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { Container, Botoes } from './styles'
 import { useNavigation } from '@react-navigation/native'
+import logoImg from '@assets/logo.png'
 
 export default function Home() {
   const navigation = useNavigation();
@@ -21,7 +22,7 @@ export default function Home() {
   
   return (
     <>
-      <Header />
+      <Header LogoSource={logoImg}/>
       <Container>
         <Text>Home</Text>
         <Botoes onPress={handleCadastroAnimais}>

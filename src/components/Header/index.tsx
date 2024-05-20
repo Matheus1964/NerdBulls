@@ -1,15 +1,23 @@
-import { Container, Logo } from './styles';
-import logoImg from '@assets/logo.png'
+import { useNavigation } from '@react-navigation/native';
+import { Logo, BackToButton } from './styles';
+
+
 
 type Props = {
-  showBackButton?: boolean;
+  //showBackButton?: boolean;
+  LogoSource: any; // Tipagem para a fonte da imagem
 
 }
 
-export function Header(){
+export function Header({ LogoSource }: Props){
+  const navigation = useNavigation();
+  function handleGoBack(){
+    navigation.goBack();
+  }
+
   return(
-    <Container>
-      <Logo source={logoImg}/>
-    </Container>
+    <BackToButton onPress={handleGoBack}>  
+      <Logo source={LogoSource}/>
+    </BackToButton>
   )
 }
