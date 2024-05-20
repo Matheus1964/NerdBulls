@@ -6,6 +6,7 @@ import { Container, ContainerTitulo, NameTitulo, ButtonOption, ButtonOptionText,
 import { Picker } from '@react-native-picker/picker';
 import { parse, isValid } from 'date-fns';
 import React, { useState } from 'react';
+import logoImg from '@assets/logo.png'
 
 interface MyFormValues {
   brinco: number | string;
@@ -38,7 +39,9 @@ const validationSchema = Yup.object().shape({
       const parsedDate = parse(value, 'dd/MM/yyyy', new Date());
       return isValid(parsedDate);
     }),
-  pesoNascimento: Yup.number().required('O peso é obrigatório').positive('O valor ao nascer deve ser um número positivo'),
+  pesoNascimento: Yup.string()
+    .matches(/^(\d*(,\d{1,})?|,\d{1,})$/, 'Deve ser um número válido')
+    .required('Obrigatório'),
   sexo: Yup.string().required('O sexo do animal é obrigatório')
 })
 
@@ -70,7 +73,7 @@ export default function CadastroAnimais() {
 
   return (
     <>
-      <Header />
+      <Header LogoSource={logoImg}/>
       <Container>
         <ScrollView>
           <ContainerTitulo>
@@ -165,7 +168,12 @@ export default function CadastroAnimais() {
                       <TextLabel>Peso ao nascer</TextLabel>
                       <InputField
                         placeholder="Ex. 50"
-                        onChangeText={handleChange('pesoNascimento')}
+                        onChangeText={(text: any) => {
+                          // Permitir apenas números e vírgulas
+                          if (/^[0-9,]*$/.test(text)) {
+                            handleChange('pesoNascimento')(text);
+                          }
+                        }}
                         onBlur={handleBlur('pesoNascimento')}
                         value={values.pesoNascimento}
                       />
