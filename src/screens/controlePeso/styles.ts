@@ -88,6 +88,7 @@ export const ButtonOption = styled.View`
   height: 56px;
   justify-content: center;
   align-items: center;
+  align-self: center;
   margin-bottom: 20px;
 `;
 
@@ -141,7 +142,7 @@ export const Row = styled.View`
   //elevation: 1;
   border-radius: 3px;
   border-color: #fff;
-  padding: 10px;
+  padding: 1px;
   background-color: #fff;
 `;
 
@@ -152,6 +153,9 @@ export const Cell = styled.Text`
   flex: 1;
 `;
 
-export const crossButton = styled.Button`
-
+export const Cell2 = styled.Text`
+  font-size: 15px;
+  text-align: center;
+  flex: 1;
 `;
+
