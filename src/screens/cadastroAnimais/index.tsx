@@ -35,7 +35,7 @@ const validationSchema = Yup.object().shape({
   raca: Yup.string().required('A raça do animal é obrigatória'),
   dataNascimento: Yup.string()
     .required('A data de nascimento é obrigatória')
-    .test('is-date', 'A data de nascimento deve ser válida', (value) => {
+    .test('is-date', 'A data de nascimento deve ser válida', (value: any) => {
       const parsedDate = parse(value, 'dd/MM/yyyy', new Date());
       return isValid(parsedDate);
     }),
