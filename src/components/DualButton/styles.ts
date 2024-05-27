@@ -17,6 +17,7 @@ justify-content: center;
   border: 1px solid black;
   border-radius: 5px;
   margin-left: 10px;
+  
 
 `;
 export const ButtonCadastrar = styled.TouchableOpacity`
