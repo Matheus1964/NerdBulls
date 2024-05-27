@@ -19,6 +19,10 @@ export default function Home() {
     navigation.navigate('cadastroAnimais')
 
   }
+
+  function handleControlePeso(){
+    navigation.navigate('controlePeso')
+  }
   
   return (
     <>
@@ -36,6 +40,9 @@ export default function Home() {
         </Botoes>
         <Botoes>
           <Text>Reprodução</Text>
+        </Botoes>
+        <Botoes onPress={handleControlePeso}>
+          <Text>Controle Peso</Text>
         </Botoes>
       </Container>
     </>

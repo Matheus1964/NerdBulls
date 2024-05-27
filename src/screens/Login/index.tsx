@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image } from 'expo-image'
-import { Text, View, Button, TouchableOpacity } from 'react-native'
+import { Text, View, Button, TouchableOpacity, ScrollView } from 'react-native'
 import img_Boi from '@assets/pexels.png'
 import iconGoogle from '@assets/googleIcon.png'
 import { useNavigation } from '@react-navigation/native'
@@ -24,7 +24,8 @@ export default function Home() {
 
   }
   return (
-    <Container>
+    <ScrollView>
+     <Container>
       <MainImg source={img_Boi} />
       <ContainerTitulo>
         <NameTitulo>Seja Bem vindo!</NameTitulo>
@@ -37,6 +38,7 @@ export default function Home() {
       <ButtonOption>
         <ButtonOptionText>Outras opções</ButtonOptionText>
       </ButtonOption>
-    </Container>
+      </Container>
+    </ScrollView>
   )
 }
