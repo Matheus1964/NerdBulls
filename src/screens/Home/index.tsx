@@ -24,6 +24,7 @@ export default function Home() {
     navigation.navigate('cadastroVacina')
   }
 
+<<<<<<< HEAD
   return (
     <Container>
       <SubHeader>
@@ -36,5 +37,31 @@ export default function Home() {
       <Cards card={cardData} />
       <TextCount>TOTAL DE ANIMAIS {num}</TextCount>
     </Container>
+=======
+  function handleCadastroAnimais(){
+    navigation.navigate('cadastroAnimais')
+
+  }
+  
+  return (
+    <>
+      <Header />
+      <Container>
+        <Text>Home</Text>
+        <Botoes onPress={handleCadastroAnimais}>
+          <Text>Cadastrar Animais</Text>
+        </Botoes>
+        <Botoes onPress={handleCadastroVacina}>
+          <Text>Cadastrar vacinas</Text>
+        </Botoes>
+        <Botoes onPress={handleAnimais}>
+          <Text>Animais</Text>
+        </Botoes>
+        <Botoes>
+          <Text>Reprodução</Text>
+        </Botoes>
+      </Container>
+    </>
+>>>>>>> Taiyo
   )
 }

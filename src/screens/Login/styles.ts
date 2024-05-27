@@ -1,11 +1,21 @@
 import { Image } from "expo-image";
 import styled from 'styled-components/native';
+import theme from '@theme/index'
+//import { Theme } from '@theme/index';
+
+/*
+export const Container = styled.View`
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  background-color: ${({ theme = { COLORS: { WHITE: '#FFFFFF' } } }) => theme.COLORS.WHITE};
+`;*/
 
 export const Container = styled.View`
   justify-content: center;
   align-items: center;
   flex: 1;
-  background-color: ${({ theme }) => theme.COLORS.WHITE };
+  background-color: ${ theme.COLORS.WHITE };
 `;
 
 export const MainImg = styled(Image)`
