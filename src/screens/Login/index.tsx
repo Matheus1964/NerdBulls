@@ -1,5 +1,4 @@
 import React from 'react'
-import { Image } from 'expo-image'
 import { Text, View, Button, TouchableOpacity } from 'react-native'
 import img_Boi from '@assets/pexels.png'
 import iconGoogle from '@assets/googleIcon.png'
@@ -23,6 +22,10 @@ export default function Home() {
     navigation.navigate('home')
 
   }
+  function handleAcesso(){
+    navigation.navigate('acesse')
+
+  }
   return (
     <Container>
       <MainImg source={img_Boi} />
@@ -35,7 +38,7 @@ export default function Home() {
         <ButtonGoogle>Entrar com o Google</ButtonGoogle>
       </ButtonGmail>
       <ButtonOption>
-        <ButtonOptionText>Outras opções</ButtonOptionText>
+        <ButtonOptionText onPress={handleAcesso}>Outras opções</ButtonOptionText>
       </ButtonOption>
     </Container>
   )

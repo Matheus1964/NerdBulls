@@ -1,5 +1,5 @@
 import theme from '@theme/index'
-import Login from '@screens/login'
+
 import { StatusBar } from 'react-native'
 import { ThemeProvider } from 'styled-components'
 import {
@@ -8,7 +8,7 @@ import {
   Roboto_700Bold
 } from '@expo-google-fonts/roboto'
 import { Loading } from '@components/Loading'
-import Home from '@screens/home'
+
 import { Routes } from './src/routes'
 
 export default function App() {
