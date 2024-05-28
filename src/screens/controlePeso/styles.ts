@@ -125,6 +125,7 @@ export const HeaderTopBarText = styled.Text`
 export const TableHeader = styled.View`
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 10px 5px;
 `;
 
@@ -133,6 +134,7 @@ export const Heading = styled.Text`
   text-align: center;
   font-size: 12px;
   font-family: ${theme.FONT_FAMILY.BOLD};
+
 `;
 
 export const Cell = styled.Text`
