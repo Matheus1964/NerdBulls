@@ -114,11 +114,11 @@ export default function ControlePeso() {
             </ContainerTitulo>
             <ContainerMain>
                 <TableHeader>
-                    <Heading>Brinco</Heading>
-                    <Heading>Nome</Heading>
-                    <Heading>Sexo</Heading>
-                    <Heading>Data da pesagem</Heading>
-                    <Heading style={{ paddingLeft: 5}}>Peso</Heading>
+                    <Heading>BRINCO</Heading>
+                    <Heading>NOME</Heading>
+                    <Heading>SEXO</Heading>
+                    <Heading>DATA DA PESAGEM</Heading>
+                    <Heading style={{ paddingLeft: 5}}>PESO</Heading>
                     <CrossButton 
                         style={{ opacity: 0 }}
                         source={require('../../assets/arrowdown.png')} 
