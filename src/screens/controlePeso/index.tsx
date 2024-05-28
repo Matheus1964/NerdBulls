@@ -7,7 +7,6 @@ import {
   ButtonOption, ButtonOptionText, ContainerMain,
   TableHeader, Heading, Row, Cell, Cell2
 } from './styles';
-import logoImg from '@assets/logo.png'
 
 import CrossButton from '../../components/CrossButton/'
 

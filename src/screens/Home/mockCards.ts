@@ -7,7 +7,7 @@ import IconVacina from '@assets/IconVacina.png'
 export const cardData: CardDataType[] = [
   { title: 'CADASTRAR GADOS', image: IconGado, link: 'cadastroAnimais' },
   { title: 'CADASTRAR VACINAS', image: IconVacina, link: 'home' },
-  { title: 'ANIMAIS', image: IconAnimais, link: 'home' },
-  { title: 'REPRODUÇÃO', image: IconAnimais, link: 'animais' },
+  { title: 'ANIMAIS', image: IconAnimais, link: 'animais' },
+  { title: 'REPRODUÇÃO', image: IconAnimais, link: 'home' },
   { title: 'CONTROLE DE PESO', image: IconAnimais, link: 'controlePeso' }
 ]

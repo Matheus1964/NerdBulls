@@ -7,7 +7,6 @@ import { Container, ContainerTitulo, NameTitulo, ButtonOption, ButtonOptionText,
 import { Picker } from '@react-native-picker/picker';
 import { parse, isValid } from 'date-fns';
 import React, { useState } from 'react';
-import logoImg from '@assets/logo.png'
 
 interface MyFormValues {
   brinco: number | string;
