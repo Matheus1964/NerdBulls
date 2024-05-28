@@ -164,16 +164,4 @@ export const Row = styled.View`
   background-color: #fff;
 `;
 
-export const Cell = styled.Text`
-  font-size: 15px;
-  font-family: ${theme.FONT_FAMILY.BOLD};
-  text-align: center;
-  flex: 1;
-`;
-
-export const Cell2 = styled.Text`
-  font-size: 15px;
-  text-align: center;
-  flex: 1;
-`;
 
