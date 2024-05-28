@@ -125,7 +125,6 @@ export const TableHeader = styled.View`
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
-  padding-right: 40px;
 `;
 
 export const Heading = styled.Text`
