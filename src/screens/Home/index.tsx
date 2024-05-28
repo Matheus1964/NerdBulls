@@ -17,12 +17,6 @@ import IconGoogleHome from '@assets/IconGoogleHome.png'
 export default function Home() {
   const num = 10
   const navigation = useNavigation()
-  function handleAnimais() {
-    navigation.navigate('animais')
-  }
-  function handleCadastroVacina() {
-    navigation.navigate('cadastroVacina')
-  }
 
   return (
     <Container>

@@ -9,5 +9,5 @@ export const cardData: CardDataType[] = [
   { title: 'CADASTRAR VACINAS', image: IconVacina, link: 'home' },
   { title: 'ANIMAIS', image: IconAnimais, link: 'home' },
   { title: 'REPRODUÇÃO', image: IconAnimais, link: 'animais' },
-  { title: 'CONTROLE DE PESO', image: IconAnimais, link: 'animais' }
+  { title: 'CONTROLE DE PESO', image: IconAnimais, link: 'controlePeso' }
 ]

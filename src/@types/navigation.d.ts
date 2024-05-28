@@ -7,6 +7,7 @@ export declare global {
       cadastroVacina: undefined
       acesse: undefined
       cadastroAnimais: undefined;
+      controlePeso: undefined;
     }
   }
 }

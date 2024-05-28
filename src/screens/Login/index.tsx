@@ -27,7 +27,8 @@ export default function Home() {
 
   }
   return (
-    <Container>
+   
+     <Container>
       <MainImg source={img_Boi} />
       <ContainerTitulo>
         <NameTitulo>Seja Bem vindo!</NameTitulo>
@@ -40,6 +41,7 @@ export default function Home() {
       <ButtonOption>
         <ButtonOptionText onPress={handleAcesso}>Outras opções</ButtonOptionText>
       </ButtonOption>
-    </Container>
+      </Container>
+    
   )
 }
