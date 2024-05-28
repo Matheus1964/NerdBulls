@@ -1,49 +1,34 @@
-import { Header } from '@components/Header'
+import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import { Container, Botoes } from './styles'
+import {
+  TextCount,
+  Container,
+  LogoHomeBoi,
+  IconGoogle,
+  SubHeader,
+  CityName
+} from './styles'
+import { Cards } from '@components/Cards'
 import { useNavigation } from '@react-navigation/native'
+import { cardData } from './mockCards'
+import LogoBoi from '@assets/logoBoi.png'
+import IconGoogleHome from '@assets/IconGoogleHome.png'
 
 export default function Home() {
-  const navigation = useNavigation();
-  function handleAnimais(){
-    navigation.navigate('animais')
+  const num = 10
+  const navigation = useNavigation()
 
-  }
-  function handleCadastroVacina(){
-    navigation.navigate('cadastroVacina')
-
-  }
-
-  function handleCadastroAnimais(){
-    navigation.navigate('cadastroAnimais')
-
-  }
-
-  function handleControlePeso(){
-    navigation.navigate('controlePeso')
-  }
-  
   return (
-    <>
-      <Header />
-      <Container>
-        <Text>Home</Text>
-        <Botoes onPress={handleCadastroAnimais}>
-          <Text>Cadastrar Animais</Text>
-        </Botoes>
-        <Botoes onPress={handleCadastroVacina}>
-          <Text>Cadastrar vacinas</Text>
-        </Botoes>
-        <Botoes onPress={handleAnimais}>
-          <Text>Animais</Text>
-        </Botoes>
-        <Botoes>
-          <Text>Reprodução</Text>
-        </Botoes>
-        <Botoes onPress={handleControlePeso}>
-          <Text>Controle Peso</Text>
-        </Botoes>
-      </Container>
-    </>
+    <Container>
+      <SubHeader>
+        <LogoHomeBoi source={LogoBoi} />
+        <TouchableOpacity>
+          <IconGoogle source={IconGoogleHome} />
+        </TouchableOpacity>
+      </SubHeader>
+      <CityName>Patos de Minas</CityName>
+      <Cards card={cardData} />
+      <TextCount>TOTAL DE ANIMAIS {num}</TextCount>
+    </Container>
   )
 }

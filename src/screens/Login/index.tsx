@@ -1,6 +1,5 @@
 import React from 'react'
-import { Image } from 'expo-image'
-import { Text, View, Button, TouchableOpacity, ScrollView } from 'react-native'
+import { Text, View, Button, TouchableOpacity } from 'react-native'
 import img_Boi from '@assets/pexels.png'
 import iconGoogle from '@assets/googleIcon.png'
 import { useNavigation } from '@react-navigation/native'
@@ -23,8 +22,12 @@ export default function Home() {
     navigation.navigate('home')
 
   }
+  function handleAcesso(){
+    navigation.navigate('acesse')
+
+  }
   return (
-    <ScrollView>
+   
      <Container>
       <MainImg source={img_Boi} />
       <ContainerTitulo>
@@ -36,9 +39,9 @@ export default function Home() {
         <ButtonGoogle>Entrar com o Google</ButtonGoogle>
       </ButtonGmail>
       <ButtonOption>
-        <ButtonOptionText>Outras opções</ButtonOptionText>
+        <ButtonOptionText onPress={handleAcesso}>Outras opções</ButtonOptionText>
       </ButtonOption>
       </Container>
-    </ScrollView>
+    
   )
 }

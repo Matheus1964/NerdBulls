@@ -68,7 +68,7 @@ export const TextLabel = styled.Text`
 `;
 
 export const InputField = styled.TextInput`
-  background-color: #F4F4F4;
+  background-color: rgba(255, 255, 255, 1) ;
   border-radius: 5px;
   width: 100%;
   min-width: 300px;
@@ -76,6 +76,7 @@ export const InputField = styled.TextInput`
   padding: 10px;
   font-size: 16px;
   color: ${theme.COLORS.GRAY_300};
+  opacity: 0.5;
 `;
 
 export const ErrorMessage = styled.Text`
@@ -86,9 +87,9 @@ export const ErrorMessage = styled.Text`
 
 export const ButtonOption = styled.View`
   background-color: #2CB859;
-  margin: 20px;
+  margin-left: 10px;
   border-radius: 5px;
-  width: 300px;
+  width: 390px;
   height: 56px;
   justify-content: center;
   align-items: center;
@@ -101,7 +102,8 @@ export const ButtonOptionText = styled.Text`
 `;
 
 export const PickerField = styled(Picker)`
-  background-color: #F4F4F4;
+  background-color: rgba(255, 255, 255, 1) ;
+  
   font-size: 16px;
   color: ${theme.COLORS.GRAY_600};
 `;

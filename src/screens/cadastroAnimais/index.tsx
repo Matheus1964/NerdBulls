@@ -1,4 +1,5 @@
 import { Header } from '@components/Header'
+import logoImg from '@assets/logo.png'
 import { ScrollView, Modal, Text, TouchableOpacity } from 'react-native';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -70,7 +71,7 @@ export default function CadastroAnimais() {
 
   return (
     <>
-      <Header />
+      <Header LogoSource={logoImg}/>
       <Container>
         <ScrollView>
           <ContainerTitulo>
@@ -100,7 +101,7 @@ export default function CadastroAnimais() {
                     <ContainerItemForm>
                       <TextLabel>Brinco</TextLabel>
                       <InputField
-                        placeholder="Informe o número do brinco do animal"
+                        placeholder="Insira o número do brinco físico"
                         onChangeText={handleChangeFormatted('brinco')}
                         onBlur={handleBlur('brinco')}
                         value={values.brinco}
@@ -109,9 +110,9 @@ export default function CadastroAnimais() {
                     </ContainerItemForm>
 
                     <ContainerItemForm>
-                      <TextLabel>Número do registro</TextLabel>
+                      <TextLabel>Brinco Eletrônico</TextLabel>
                       <InputField
-                        placeholder="Informe o número do registro do animal"
+                        placeholder="Insira o nome do brinco eletrônico"
                         onChangeText={handleChangeFormatted('registro')}
                         onBlur={handleBlur('registro')}
                         value={values.registro}
@@ -173,7 +174,7 @@ export default function CadastroAnimais() {
                     </ContainerItemForm>
 
                     <ContainerItemForm>
-                      <TextLabel>Selecione o sexo:</TextLabel>
+                      <TextLabel>Selecione o sexo</TextLabel>
                       <PickerField
                         selectedValue={values.sexo}
                         onValueChange={handleChange('sexo')}

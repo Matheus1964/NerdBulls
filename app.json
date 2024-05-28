@@ -22,7 +22,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.gabrielsanic.NerdBulls"
+      "package": "com.matheusaragao.NerdBulls"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -32,7 +32,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "9a6b67f9-60b8-4f3d-8829-7d1fb252a94e"
+        "projectId": "ed18ac3a-90b4-4b47-b220-e554d13ea792"
       }
     }
   }

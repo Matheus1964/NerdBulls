@@ -1,8 +1,12 @@
 const theme = {
   COLORS: {
     WHITE: '#FFFFFF',
+    BLACK: '#000000',
+
     GREEN_700: '#00875F',
     GREEN_500: '#00B37E',
+    GREEN_300: '#2CB859',
+
     RED: '#F75A68',
     RED_DARK: '#AA2834',
     GRAY_700: '#121214',
@@ -21,7 +25,8 @@ const theme = {
     SM: 14,
     MD: 16,
     LG: 18,
-    XL: 24
+    XL: 24,
+    XXX: 30
   }
 };
 

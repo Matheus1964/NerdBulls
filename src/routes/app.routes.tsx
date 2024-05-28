@@ -1,8 +1,9 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import Login from '@screens/login'
-import Home from '@screens/home'
+import Login from '@screens/Login'
+import Home from '@screens/Home'
 import Animais from '@screens/animais'
 import CadastroVacina from '@screens/cadastroVacina'
+import Acesse from '@screens/acesso'
 import CadastroAnimais from '@screens/cadastroAnimais'
 import ControlePeso from '@screens/controlePeso'
 
@@ -16,6 +17,7 @@ export function AppRoutes() {
       <Screen name="home" component={Home} />
       <Screen name="animais" component={Animais} />
       <Screen name="cadastroVacina" component={CadastroVacina} />
+      <Screen name="acesse" component={Acesse} />
       <Screen name="cadastroAnimais" component={CadastroAnimais} />
       <Screen name="controlePeso" component={ControlePeso} />
       
