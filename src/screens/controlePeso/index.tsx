@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FlatList, View, Text } from 'react-native';
 import { Header } from '@components/Header';
+import logoImg from '@assets/logo.png'
 import { 
   Container, ContainerTitulo, NameTitulo,
   ButtonOption, ButtonOptionText, ContainerMain,
@@ -109,7 +110,7 @@ export default function ControlePeso() {
 
     return (
         <>
-            <Header />
+            <Header LogoSource={logoImg}/>
             <ContainerTitulo>
                 <NameTitulo>Escolha um animal (incompleto)</NameTitulo>
             </ContainerTitulo>

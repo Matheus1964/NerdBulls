@@ -5,8 +5,8 @@ export const CardItem = styled.View`
   justify-content: center;
   align-items: center;
   
-  width: 189px;
-  height: 170px;
+  width: 160px;
+  height: 150px;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.COLORS.GRAY_200 };
 
