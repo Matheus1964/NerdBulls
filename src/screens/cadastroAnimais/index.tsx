@@ -1,4 +1,5 @@
 import { Header } from '@components/Header'
+import logoImg from '@assets/logo.png'
 import { ScrollView, Modal, Text, TouchableOpacity } from 'react-native';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -70,7 +71,7 @@ export default function CadastroAnimais() {
 
   return (
     <>
-      <Header />
+      <Header LogoSource={logoImg}/>
       <Container>
         <ScrollView>
           <ContainerTitulo>

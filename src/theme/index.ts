@@ -1,17 +1,12 @@
 const theme = {
   COLORS: {
     WHITE: '#FFFFFF',
-<<<<<<< HEAD
     BLACK: '#000000',
 
     GREEN_700: '#00875F',
     GREEN_500: '#00B37E',
     GREEN_300: '#2CB859',
 
-=======
-    GREEN_700: '#00875F',
-    GREEN_500: '#00B37E',
->>>>>>> Taiyo
     RED: '#F75A68',
     RED_DARK: '#AA2834',
     GRAY_700: '#121214',

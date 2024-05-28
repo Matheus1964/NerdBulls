@@ -86,9 +86,9 @@ export const ErrorMessage = styled.Text`
 
 export const ButtonOption = styled.View`
   background-color: #2CB859;
-  margin: 20px;
+  margin-left: 10px;
   border-radius: 5px;
-  width: 300px;
+  width: 390px;
   height: 56px;
   justify-content: center;
   align-items: center;
