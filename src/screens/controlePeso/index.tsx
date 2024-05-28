@@ -100,8 +100,7 @@ export default function ControlePeso() {
                         <Cell></Cell>
                         <Cell></Cell>
                         <Cell2>{pesagem.data}</Cell2>
-                        <Cell2 style={{ paddingRight: 12 }}>{pesagem.peso}kg</Cell2>
-                        
+                        <Cell2 style={{ paddingRight: 15 }}>{pesagem.peso}kg</Cell2>
                     </Row>
                 ))}
             </View>
@@ -112,16 +111,19 @@ export default function ControlePeso() {
         <>
             <Header LogoSource={logoImg}/>
             <ContainerTitulo>
-                <NameTitulo>Escolha um animal (incompleto)</NameTitulo>
+                <NameTitulo>Escolha um animal</NameTitulo>
             </ContainerTitulo>
             <ContainerMain>
                 <TableHeader>
-                    <Heading>Brinco</Heading>
-                    <Heading>Nome</Heading>
-                    <Heading>Sexo</Heading>
-                    <Heading>Data da pesagem</Heading>
-                    <Heading>Peso</Heading>
-                    
+                    <Heading>BRINCO</Heading>
+                    <Heading>NOME</Heading>
+                    <Heading>SEXO</Heading>
+                    <Heading>DATA DA PESAGEM</Heading>
+                    <Heading style={{ paddingLeft: 5}}>PESO</Heading>
+                    <CrossButton 
+                        style={{ opacity: 0 }}
+                        source={require('../../assets/arrowdown.png')} 
+                    />
                 </TableHeader>
                 <FlatList
                     data={data}

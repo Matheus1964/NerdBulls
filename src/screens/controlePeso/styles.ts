@@ -105,6 +105,7 @@ export const PickerField = styled(Picker)`
 
 export const ContainerMain = styled.View`
   flex: 1;
+  padding: 10px;
   background-color: #fff;
 `;
 
@@ -124,16 +125,33 @@ export const HeaderTopBarText = styled.Text`
 export const TableHeader = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px;
-  padding-right: 40px;
+  align-items: center;
+  padding: 10px 5px;
 `;
 
 export const Heading = styled.Text`
   flex: 1;
   text-align: center;
-  font-size: 15px;
- 
+  font-size: 12px;
+  font-family: ${theme.FONT_FAMILY.BOLD};
+
 `;
+
+export const Cell = styled.Text`
+  font-size: 12px;
+  font-family: ${theme.FONT_FAMILY.REGULAR};
+  text-align: center;
+  flex: 1;
+`;
+
+
+export const Cell2 = styled.Text`
+  font-size: 12px;
+  text-align: center;
+  flex: 1;
+`;
+
+
 
 export const Row = styled.View`
   flex-direction: row;
@@ -148,7 +166,7 @@ export const Row = styled.View`
 
 export const Cell = styled.Text`
   font-size: 15px;
-  font-family: ${theme.FONT_FAMILY.REGULAR};
+  font-family: ${theme.FONT_FAMILY.BOLD};
   text-align: center;
   flex: 1;
 `;
