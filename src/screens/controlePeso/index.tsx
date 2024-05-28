@@ -108,7 +108,7 @@ export default function ControlePeso() {
 
     return (
         <>
-            <Header />
+            <Header LogoSource={ require('../../assets/logo.png')}/>
             <ContainerTitulo>
                 <NameTitulo>Escolha um animal</NameTitulo>
             </ContainerTitulo>

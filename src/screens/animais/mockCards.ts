@@ -3,7 +3,7 @@ import LogoSource from '../../assets/logo.png'
 import IconGado from '@assets/IconGado.png'
 
 export const cardData: CardDataType[] = [
-  { title: 'CADASTRAR GADOS', image: IconGado, link: 'cadastroVacina' },
+
   { title: 'CADASTRAR VACINAS', image: LogoSource, link: 'home' },
   { title: 'ANIMAIS', image: LogoSource, link: 'animais' },
   { title: 'REPRODUÇÃO', image: LogoSource, link: 'animais' },
