@@ -19,8 +19,8 @@ export const Container = styled.View`
 `;
 
 export const MainImg = styled(Image)`
-  width: 355px;
-  height: 337px;
+  width: 340px;
+  height: 330px;
   margin-bottom: 83px;
 `;
 
@@ -45,7 +45,7 @@ export const NameSubTitulo= styled.Text`
 export const ButtonGmail= styled.TouchableOpacity`
   background-color: #2CB859;
   border-radius: 5px;
-  width: 390px;
+  width: 360px;
   height: 56px;
   flex-direction: row;
   justify-content: center;
@@ -71,12 +71,13 @@ export const ButtonGoogle = styled.Text`
 export const ButtonOption = styled.TouchableOpacity`
   background-color: white;
   border-radius: 5px;
-  width: 390px;
+  width: 360px;
   height: 56px;
   justify-content: center;
   align-items: center;
   border-width: 1px;
   border-color: black;
+  
 `;
 
 export const ButtonOptionText = styled.Text`

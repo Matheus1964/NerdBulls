@@ -35,11 +35,13 @@ const validationSchema = Yup.object().shape({
   raca: Yup.string().required('A raça do animal é obrigatória'),
   dataNascimento: Yup.string()
     .required('A data de nascimento é obrigatória')
-    .test('is-date', 'A data de nascimento deve ser válida', (value) => {
+    .test('is-date', 'A data de nascimento deve ser válida', (value: any) => {
       const parsedDate = parse(value, 'dd/MM/yyyy', new Date());
       return isValid(parsedDate);
     }),
-  pesoNascimento: Yup.number().required('O peso é obrigatório').positive('O valor ao nascer deve ser um número positivo'),
+  pesoNascimento: Yup.string()
+    .matches(/^(\d*(,\d{1,})?|,\d{1,})$/, 'Deve ser um número válido')
+    .required('Obrigatório'),
   sexo: Yup.string().required('O sexo do animal é obrigatório')
 })
 
@@ -166,7 +168,12 @@ export default function CadastroAnimais() {
                       <TextLabel>Peso ao nascer</TextLabel>
                       <InputField
                         placeholder="Ex. 50"
-                        onChangeText={handleChange('pesoNascimento')}
+                        onChangeText={(text: any) => {
+                          // Permitir apenas números e vírgulas
+                          if (/^[0-9,]*$/.test(text)) {
+                            handleChange('pesoNascimento')(text);
+                          }
+                        }}
                         onBlur={handleBlur('pesoNascimento')}
                         value={values.pesoNascimento}
                       />

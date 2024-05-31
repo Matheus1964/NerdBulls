@@ -10,7 +10,7 @@ export const ContainerButton = styled.View`
 export const ButtonAcessar = styled.TouchableOpacity`
 align-items: center;
 justify-content: center;
-  width: 190px;
+  width: 180px;
   height: 57px;
   margin-top: 34px;
   background-color: #2CB859;
@@ -23,7 +23,7 @@ justify-content: center;
 export const ButtonCadastrar = styled.TouchableOpacity`
 align-items: center;
 justify-content: center;
-  width: 190px;
+  width: 180px;
   height: 57px;
   margin-top: 34px;
   border: 1px solid black;
