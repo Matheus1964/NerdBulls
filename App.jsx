@@ -1,39 +1,26 @@
-{
-  "expo": {
-    "name": "NerdBulls",
-    "slug": "NerdBulls",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splashscreen.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#30bc5c"
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "package": "com.matheusaragao.NerdBulls"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      "expo-font"
-    ],
-    "extra": {
-      "eas": {
-        "projectId": "ed18ac3a-90b4-4b47-b220-e554d13ea792"
-      }
-    }
-  }
+import theme from '@theme/index'
+
+import { StatusBar } from 'react-native'
+import { ThemeProvider } from 'styled-components'
+import {
+  useFonts,
+  Roboto_400Regular,
+  Roboto_700Bold
+} from '@expo-google-fonts/roboto'
+import { Loading } from '@components/Loading'
+
+import { Routes } from './src/routes'
+
+export default function App() {
+  const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold })
+
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <StatusBar barStyle="dark-content" backgroundColor="#BEC3C7" />
+
+        {fontsLoaded ? <Routes /> : <Loading />}
+      </ThemeProvider>
+    </>
+  )
 }

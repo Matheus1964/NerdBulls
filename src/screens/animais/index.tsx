@@ -46,7 +46,7 @@ export default function Animais() {
     const isChecked = selectedAnimal === item.id;
   
     return (
-      <AnimalItem selected={isChecked}>
+      <AnimalItem >
         <AnimalText>{item.id}</AnimalText>
         <AnimalText>{item.nome}</AnimalText>
         <AnimalText>{item.sexo}</AnimalText>

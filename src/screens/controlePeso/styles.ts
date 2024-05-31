@@ -125,6 +125,7 @@ export const HeaderTopBarText = styled.Text`
 export const TableHeader = styled.View`
   flex-direction: row;
   justify-content: space-between;
+  background-color: #f0f0f0;
   align-items: center;
   padding: 10px 5px;
 `;

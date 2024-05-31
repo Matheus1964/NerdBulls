@@ -233,7 +233,7 @@ export default function Reproduçao() {
         <NameTitulo>Escolha um animal</NameTitulo>
       </ContainerTitulo>
       <ContainerMain>
-        <TableHeader>
+        <TableHeader style={{ backgroundColor: '#f0f0f0' }}>
           <Heading>BRINCO</Heading>
           <Heading>MÃE</Heading>
           <Heading >PAI</Heading>

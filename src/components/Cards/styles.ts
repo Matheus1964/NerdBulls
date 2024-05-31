@@ -1,5 +1,6 @@
 import { ScrollView, View } from 'react-native';
 import styled from 'styled-components/native'
+import theme from '@theme/index';
 
 export const CardItem = styled.View`
   justify-content: center;
@@ -8,7 +9,7 @@ export const CardItem = styled.View`
   width: 160px;
   height: 150px;
   border-radius: 10px;
-  background-color: ${({ theme }) => theme.COLORS.GRAY_200 };
+  background-color: ${theme.COLORS.GRAY_200};
 
 `
 
