@@ -14,7 +14,7 @@ import { CheckBox } from '@components/CheckBox'
 import { DualButton } from '@components/DualButton'
 
 export default function Acesso() {
-  const handleCheckBoxPress = state => {
+  const handleCheckBoxPress = (state: any) => {
     console.log('Checkbox state:', state)
   }
   const handleAcessar = () => {

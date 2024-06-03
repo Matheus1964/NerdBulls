@@ -106,21 +106,12 @@ export default function CadastroAnimais() {
                         placeholder="Insira o número do brinco físico"
                         onChangeText={handleChangeFormatted('brinco')}
                         onBlur={handleBlur('brinco')}
-                        value={values.brinco}
+                        value={String(values.brinco)}
                       />
                       {errors.brinco && touched.brinco && <ErrorMessage>{errors.brinco}</ErrorMessage>}
                     </ContainerItemForm>
 
-                    <ContainerItemForm>
-                      <TextLabel>Brinco Eletrônico</TextLabel>
-                      <InputField
-                        placeholder="Insira o nome do brinco eletrônico"
-                        onChangeText={handleChangeFormatted('registro')}
-                        onBlur={handleBlur('registro')}
-                        value={values.registro}
-                      />
-                      {errors.registro && touched.registro && <ErrorMessage>{errors.registro}</ErrorMessage>}
-                    </ContainerItemForm>
+                    value={values.registro}
 
                     <ContainerItemForm>
                       <TextLabel>Nome</TextLabel>
@@ -136,9 +127,9 @@ export default function CadastroAnimais() {
 
                     <ContainerItemForm>
                       <TextLabel>Selecione a raça do animal:</TextLabel>
-                      <PickerField
+                      <Picker
                         selectedValue={values.raca}
-                        onValueChange={handleChange('raca')}
+                        onValueChange={(itemValue: string) => handleChange('raca')(itemValue)}
                       >
                         <Picker.Item label="Escolha uma raça" value='' />
                         <Picker.Item label="Nelore" value="Nelore" />
@@ -147,8 +138,8 @@ export default function CadastroAnimais() {
                         <Picker.Item label="Mini Gado" value="Mini Gado" />
                         <Picker.Item label="Nelore Pintado Vermelho" value="Nelore Pintado Vermelho" />
                         <Picker.Item label="Outro" value="Outro" />
-                      </PickerField>
-                        {errors.raca && touched.raca && <ErrorMessage>{errors.sexo}</ErrorMessage>}
+                      </Picker>
+                      {errors.raca && touched.raca && <ErrorMessage>{errors.sexo}</ErrorMessage>}
                     </ContainerItemForm>
                     
                     <ContainerItemForm>
@@ -175,14 +166,14 @@ export default function CadastroAnimais() {
                           }
                         }}
                         onBlur={handleBlur('pesoNascimento')}
-                        value={values.pesoNascimento}
+                        value={String(values.pesoNascimento)}
                       />
                       {errors.pesoNascimento && touched.pesoNascimento && <ErrorMessage>{errors.pesoNascimento}</ErrorMessage>}
                     </ContainerItemForm>
 
                     <ContainerItemForm>
                       <TextLabel>Selecione o sexo</TextLabel>
-                      <PickerField
+                      <Picker
                         selectedValue={values.sexo}
                         onValueChange={handleChange('sexo')}
                         
@@ -190,7 +181,7 @@ export default function CadastroAnimais() {
                         <Picker.Item label="Escolha um sexo" value="" />
                         <Picker.Item label="Macho" value="macho" />
                         <Picker.Item label="Fêmea" value="femea" />
-                      </PickerField>
+                      </Picker>
                         {errors.sexo && touched.sexo && <ErrorMessage>{errors.sexo}</ErrorMessage>}
                     </ContainerItemForm>
 

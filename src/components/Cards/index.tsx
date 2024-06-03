@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, ScrollView, Image } from 'react-native'
-import styled, { CardItem, CardButton, Teste } from './styles'
+import { CardItem, CardButton, Teste } from './styles'
 import LogoSource from '../../assets/logo.png'
 import { CardType } from './type'
 import { useNavigation } from '@react-navigation/native'
@@ -8,8 +8,8 @@ import { useNavigation } from '@react-navigation/native'
 
 export function Cards({ card }: CardType) {
   const navigation = useNavigation()
-  function handleAnimais(rota:string) {
-    navigation.navigate(rota)
+  function handleAnimais(rota: string) {
+    navigation.navigate(rota as any)
   }
   return (
     <CardButton>

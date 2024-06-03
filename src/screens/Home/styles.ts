@@ -1,11 +1,11 @@
-
-
 import styled from 'styled-components/native';
 import { Image } from 'expo-image';
+import theme from '@theme/index';
+
 export const TextCount =  styled.Text`
-  color: ${({ theme }) => theme.COLORS.GREEN_300 };
-  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-  font-size: ${({ theme }) => theme.FONT_SIZE.MD};
+  color: ${theme.COLORS.GREEN_300 };
+  font-family: ${theme.FONT_FAMILY.BOLD};
+  font-size: ${theme.FONT_SIZE.MD};
   justify-content: center;
   align-items: center;
   margin-top: 33px;
@@ -43,8 +43,8 @@ export const CityName = styled.Text`
   padding-left: 20px;
   margin-bottom: 33px;
 
-  color: ${({ theme }) => theme.COLORS.BLACK };
-  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG};
+  color: ${theme.COLORS.BLACK };
+  font-family: ${theme.FONT_FAMILY.BOLD};
+  font-size: ${theme.FONT_SIZE.LG};
   
 `;

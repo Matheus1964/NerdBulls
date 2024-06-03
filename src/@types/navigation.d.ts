@@ -8,6 +8,7 @@ export declare global {
       acesse: undefined
       cadastroAnimais: undefined;
       controlePeso: undefined;
+      tutorial: undefined;
     }
   }
 }

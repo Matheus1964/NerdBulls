@@ -1,3 +1,4 @@
+import theme from '@theme/index';
 import { ScrollView, View } from 'react-native';
 import styled from 'styled-components/native'
 
@@ -8,8 +9,7 @@ export const CardItem = styled.View`
   width: 160px;
   height: 150px;
   border-radius: 10px;
-  background-color: ${({ theme }) => theme.COLORS.GRAY_200 };
-
+  background-color: ${theme.COLORS.GRAY_200 };
 `
 
 
@@ -19,10 +19,7 @@ export const CardButton = styled.View`
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
- 
-  
-  
-  
+
 `
 export const Teste = styled.View`
   background-color: #D9D9D9;
@@ -31,7 +28,5 @@ export const Teste = styled.View`
   width: 120px;
   height: 120px;
   border-radius: 80px;
-  
-  
   
 `
