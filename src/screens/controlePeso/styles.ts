@@ -80,7 +80,7 @@ export const ErrorMessage = styled.Text`
   margin-bottom: 10px;
 `;
 
-export const ButtonOption = styled.View`
+export const ButtonOption = styled.TouchableOpacity`
   background-color: #2CB859;
   margin: 20px;
   border-radius: 5px;
@@ -151,8 +151,6 @@ export const Cell2 = styled.Text`
   text-align: center;
   flex: 1;
 `;
-
-
 
 export const Row = styled.View`
   flex-direction: row;

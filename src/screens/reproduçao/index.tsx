@@ -185,7 +185,7 @@ export default function Reproduçao() {
           <Cell>{item.gestacao?.dataParto}</Cell>
           <CrossButton 
             onPress={() => toggleExpand(item.id)} 
-            source={require('../../assets/arrowdown.png')} 
+            source={require('../../assets/setaIcon.png')} 
           />
         </Row>
 
@@ -240,7 +240,7 @@ export default function Reproduçao() {
           <Heading style={{ paddingLeft: 1}}>DATA PREVISTA DE PARTO</Heading>
           <CrossButton 
             style={{ opacity: 0 }}
-            source={require('../../assets/arrowdown.png')} 
+            source={require('../../assets/setaIcon.png')} 
           />
         </TableHeader>
         <FlatList
