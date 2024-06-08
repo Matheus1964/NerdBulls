@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FlatList, View, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 import { Header } from '@components/Header';
 import { 
   Container, ContainerTitulo, NameTitulo,
@@ -35,8 +36,16 @@ interface DataItem {
   gestacao?: Gestacao;
 }
 
+
 export default function Reproduçao() {
   const [expandedItems, setExpandedItems] = useState<number[]>([]);
+
+    
+  const navigation = useNavigation();
+  function handleCadastro(){
+    navigation.navigate('cadastroGestacao')
+  }
+
 
   // Temporario
   const data: DataItem[] = [
@@ -248,8 +257,8 @@ export default function Reproduçao() {
           keyExtractor={(item) => item.id.toString()}
           renderItem={renderLastPesagem}
         />
-        <ButtonOption>
-          <ButtonOptionText>Cadastrar nova pesagem</ButtonOptionText>
+        <ButtonOption onPress={handleCadastro}>
+          <ButtonOptionText>Cadastrar nova gestação</ButtonOptionText>
         </ButtonOption>
       </ContainerMain>
     </>
