@@ -2,31 +2,33 @@ import styled from 'styled-components/native';
 import { Image } from 'expo-image';
 import theme from '@theme/index';
 
-export const TextCount =  styled.Text`
-  color: ${theme.COLORS.GREEN_300 };
+export const TextCount = styled.Text`
+  color: ${theme.COLORS.GREEN_300};
   font-family: ${theme.FONT_FAMILY.BOLD};
   font-size: ${theme.FONT_SIZE.MD};
   justify-content: center;
   align-items: center;
   margin-top: 33px;
-
-
 `;
+
 export const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
 `;
+
 export const LogoHomeBoi = styled(Image)`
   width: 106px;
   height: 91px;
   margin-bottom: 30px;
 `;
+
 export const IconGoogle = styled(Image)`
   width: 50px;
   height: 50px;
   margin-bottom: 30px;
 `;
+
 export const SubHeader = styled.View`
   align-items: center;
   justify-content: space-between;
@@ -34,17 +36,49 @@ export const SubHeader = styled.View`
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;
-  
 `;
+
 export const CityName = styled.Text`
   align-items: center;
   justify-content: center;
   width: 100%;
   padding-left: 20px;
   margin-bottom: 33px;
-
-  color: ${theme.COLORS.BLACK };
+  color: ${theme.COLORS.BLACK};
   font-family: ${theme.FONT_FAMILY.BOLD};
   font-size: ${theme.FONT_SIZE.LG};
-  
+`;
+
+export const ModalContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+`;
+
+export const ModalContent = styled.View`
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  align-items: center;
+`;
+
+export const ModalText = styled.Text`
+  margin-bottom: 10px;
+`;
+
+export const ModalButtonsContainer = styled.View`
+  flex-direction: row;
+`;
+
+export const ModalButton = styled.TouchableOpacity`
+  background-color: ${({ color }) => color};
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+`;
+
+export const ModalButtonText = styled.Text`
+  color: white;
 `;

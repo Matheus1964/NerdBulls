@@ -46,8 +46,8 @@ const tutorialItems: TutorialItem[] = [
 export default function Tutorial() {
 
   const navigation = useNavigation();
-  function handleAcesse(){
-    navigation.navigate('acesse')
+  function handleHome(){
+    navigation.navigate('home')
 
   }
 
@@ -66,7 +66,7 @@ export default function Tutorial() {
   //funcao para pular a introducao
   function handleSkip() {
     //mudar para a tela que deseja ir ao pular a introducao
-    handleAcesse();
+    handleHome();
   };
 
   const renderItem = ({ item }: { item: TutorialItem }) => (
@@ -97,7 +97,6 @@ export default function Tutorial() {
 
   return (
     <Container>
-      <Header LogoSource={logoImg}/>
       <CarouselContainer>
         <Carousel
           ref={carouselRef}

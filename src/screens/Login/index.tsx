@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, Button, TouchableOpacity } from 'react-native'
+import { Text, View, Button, TouchableOpacity, BackHandler } from 'react-native'
 import img_Boi from '@assets/pexels.png'
 import iconGoogle from '@assets/googleIcon.png'
 import { useNavigation } from '@react-navigation/native'
@@ -18,17 +18,12 @@ import {
 
 export default function Home() {
   const navigation = useNavigation();
-  function handleHome(){
-    navigation.navigate('home')
-
-  }
   function handleAcesso(){
     navigation.navigate('acesse')
 
   }
-
-  function tutorial(){
-    navigation.navigate('tutorial')
+  function handleExit() {
+    BackHandler.exitApp(); // Função para sair do aplicativo
   }
 
   return (
@@ -39,13 +34,12 @@ export default function Home() {
         <NameTitulo>Seja Bem vindo!</NameTitulo>
         <NameSubTitulo>Como deseja acessar?</NameSubTitulo>
       </ContainerTitulo>
-      <ButtonGmail onPress={handleHome}>
-        <ImgGoogle source={iconGoogle} />
-        <ButtonGoogle>Entrar com o Google</ButtonGoogle>
+      <ButtonGmail onPress={handleAcesso}>
+        <ButtonGoogle>Entrar</ButtonGoogle>
       </ButtonGmail>
-      <ButtonOption>
-        {/*<ButtonOptionText onPress={handleAcesso}>Outras opções</ButtonOptionText>*/}
-        <ButtonOptionText onPress={tutorial}>Outras opções</ButtonOptionText>
+      <ButtonOption onPress={handleExit}>
+        <ButtonOptionText >Sair</ButtonOptionText>
+        
       </ButtonOption>
       </Container>
     
