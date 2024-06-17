@@ -26,6 +26,11 @@ export default function Home() {
     navigation.navigate('acesse')
 
   }
+
+  function tutorial(){
+    navigation.navigate('tutorial')
+  }
+
   return (
    
      <Container>
@@ -39,7 +44,8 @@ export default function Home() {
         <ButtonGoogle>Entrar com o Google</ButtonGoogle>
       </ButtonGmail>
       <ButtonOption>
-        <ButtonOptionText onPress={handleAcesso}>Outras opções</ButtonOptionText>
+        {/*<ButtonOptionText onPress={handleAcesso}>Outras opções</ButtonOptionText>*/}
+        <ButtonOptionText onPress={tutorial}>Outras opções</ButtonOptionText>
       </ButtonOption>
       </Container>
     

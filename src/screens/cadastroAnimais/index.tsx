@@ -261,9 +261,9 @@ export default function CadastroAnimais() {
 
                     <ContainerItemForm>
                       <TextLabel>Selecione a raça do animal:</TextLabel>
-                      <PickerField
+                      <Picker
                         selectedValue={values.raca}
-                        onValueChange={handleChange('raca')}
+                        onValueChange={(itemValue: string) => handleChange('raca')(itemValue)}
                       >
                         <Picker.Item label="Escolha uma raça" value="" />
                         <Picker.Item label="Nelore" value="Nelore" />
@@ -281,7 +281,7 @@ export default function CadastroAnimais() {
                           value="Nelore Pintado Vermelho"
                         />
                         <Picker.Item label="Outro" value="Outro" />
-                      </PickerField>
+                      </Picker>
                       {errors.raca && touched.raca && (
                         <ErrorMessage>{errors.raca}</ErrorMessage>
                       )}
@@ -320,14 +320,14 @@ export default function CadastroAnimais() {
 
                     <ContainerItemForm>
                       <TextLabel>Selecione o sexo</TextLabel>
-                      <PickerField
+                      <Picker
                         selectedValue={values.sexo}
                         onValueChange={handleChange('sexo')}
                       >
                         <Picker.Item label="Escolha um sexo" value="" />
                         <Picker.Item label="Macho" value="macho" />
                         <Picker.Item label="Fêmea" value="femea" />
-                      </PickerField>
+                      </Picker>
                       {errors.sexo && touched.sexo && (
                         <ErrorMessage>{errors.sexo}</ErrorMessage>
                       )}

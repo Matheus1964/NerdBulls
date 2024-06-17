@@ -8,8 +8,7 @@ export declare global {
       acesse: undefined;
       cadastroAnimais: undefined;
       controlePeso: undefined;
-      register: undefined;
-      dadosAnimais: { animal: Animal };
+      tutorial: undefined;
     }
   }
 }

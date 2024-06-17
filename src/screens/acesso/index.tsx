@@ -14,7 +14,7 @@ import { CheckBox } from '@components/CheckBox';
 import { DualButton } from '@components/DualButton';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigation } from '@react-navigation/native';
-import { auth } from '../../services/firebaseConfig'; // Importe o objeto 'auth' configurado
+import { auth } from '../../services/firebaseConfig';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Acesso() {
@@ -56,7 +56,16 @@ export default function Acesso() {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       Alert.alert('Sucesso', 'Login realizado com sucesso!');
-      navigation.navigate('home');
+
+      // Verificar se o tutorial já foi exibido
+      const tutorialShown = await AsyncStorage.getItem('tutorialShown');
+      if (!tutorialShown) {
+        // Marcar que o tutorial foi exibido
+        await AsyncStorage.setItem('tutorialShown', 'true');
+        navigation.navigate('tutorial');
+      } else {
+        navigation.navigate('home');
+      }
 
       if (rememberPassword) {
         await AsyncStorage.setItem('email', email);
