@@ -9,6 +9,8 @@ export declare global {
       cadastroAnimais: undefined;
       controlePeso: undefined;
       tutorial: undefined;
+      reproduçao: undefined;
+      cadastroGestacao: undefined;
     }
   }
 }

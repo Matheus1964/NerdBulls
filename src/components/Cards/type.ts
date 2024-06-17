@@ -2,7 +2,7 @@
 export type CardDataType = {
   title: string
   image: any
-  link: 'home' | 'login' | 'animais' | 'cadastro' |'cadastroAnimais' | 'controlePeso'
+  link: 'home' | 'login' | 'animais' | 'cadastro' |'cadastroAnimais' | 'controlePeso' | 'reproduçao'
 
 }
 

@@ -2,6 +2,7 @@ import theme from '@theme/index';
 import { ScrollView, View } from 'react-native';
 import styled from 'styled-components/native'
 
+
 export const CardItem = styled.View`
   justify-content: center;
   align-items: center;

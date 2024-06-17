@@ -1,15 +1,16 @@
 import styled from 'styled-components/native';
 import theme from '@theme/index';
-import { Picker } from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker'
 
 export const Container = styled.View`
-  padding: 30px 30px 0;
+  padding-inline: 20px;
   flex: 1;
   background-color: ${theme.COLORS.WHITE};
 `;
 
-export const ContainerTitulo = styled.View`
+export const ContainerTitulo= styled.View`
   color: blue;
+  margin-bottom: 30px;
   margin-top: 20px;
   align-items: flex-start;
   padding: 20px;
@@ -17,6 +18,7 @@ export const ContainerTitulo = styled.View`
 
 export const ContainerForm = styled.View`
   align-items: flex-start;
+  display: block;
   padding-left: 20px;
 `;
 
@@ -43,11 +45,13 @@ export const ModalView = styled.View`
 export const TouchableModal = styled.TouchableOpacity`
   background-color: #2CB859;
   border-radius: 3px;
-  padding: 10px 20px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin-top: 20px;
 `;
 
-export const NameTitulo = styled.Text`
+export const NameTitulo= styled.Text`
   color: black;
   font-size: ${theme.FONT_SIZE.XL};
   font-family: ${theme.FONT_FAMILY.BOLD};
@@ -64,7 +68,7 @@ export const TextLabel = styled.Text`
 `;
 
 export const InputField = styled.TextInput`
-  background-color: #F4F4F4;
+  background-color: rgba(255, 255, 255, 1) ;
   border-radius: 5px;
   width: 100%;
   min-width: 300px;
@@ -72,6 +76,7 @@ export const InputField = styled.TextInput`
   padding: 10px;
   font-size: 16px;
   color: ${theme.COLORS.GRAY_300};
+  opacity: 0.5;
 `;
 
 export const ErrorMessage = styled.Text`
@@ -80,16 +85,17 @@ export const ErrorMessage = styled.Text`
   margin-bottom: 10px;
 `;
 
+
 export const ButtonOption = styled.TouchableOpacity`
   background-color: #2CB859;
-  margin: 20px;
+  margin: 0;
   border-radius: 5px;
   width: 300px;
   height: 56px;
   justify-content: center;
   align-items: center;
   align-self: center;
-  margin-bottom: 20px;
+
 `;
 
 export const ButtonOptionText = styled.Text`
@@ -98,69 +104,8 @@ export const ButtonOptionText = styled.Text`
 `;
 
 export const PickerField = styled(Picker)`
-  background-color: #F4F4F4;
+  background-color: rgba(255, 255, 255, 1) ;
+  
   font-size: 16px;
   color: ${theme.COLORS.GRAY_600};
 `;
-
-export const ContainerMain = styled.View`
-  flex: 1;
-  padding: 10px;
-  background-color: #fff;
-`;
-
-export const HeaderTopBar = styled.View`
-  background-color: #6AB7E2;
-  padding: 10px 12px;
-  border-radius: 5px;
-  //elevation: 2;
-  margin-bottom: 15px;
-`;
-
-export const HeaderTopBarText = styled.Text`
-  color: #fff;
-  font-size: 16px;
-`;
-
-export const TableHeader = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: #f0f0f0;
-  align-items: center;
-  padding: 10px 5px;
-`;
-
-export const Heading = styled.Text`
-  flex: 1;
-  text-align: center;
-  font-size: 12px;
-  font-family: ${theme.FONT_FAMILY.BOLD};
-
-`;
-
-export const Cell = styled.Text`
-  font-size: 12px;
-  font-family: ${theme.FONT_FAMILY.REGULAR};
-  text-align: center;
-  flex: 1;
-`;
-
-
-export const Cell2 = styled.Text`
-  font-size: 12px;
-  text-align: center;
-  flex: 1;
-`;
-
-export const Row = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 8px 2px;
-  //elevation: 1;
-  border-radius: 3px;
-  border-color: #fff;
-  padding: 1px;
-  background-color: #fff;
-`;
-
-

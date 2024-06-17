@@ -125,7 +125,6 @@ export const HeaderTopBarText = styled.Text`
 export const TableHeader = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  background-color: #f0f0f0;
   align-items: center;
   padding: 10px 5px;
 `;
@@ -140,15 +139,27 @@ export const Heading = styled.Text`
 
 export const Cell = styled.Text`
   font-size: 12px;
-  font-family: ${theme.FONT_FAMILY.REGULAR};
   text-align: center;
   flex: 1;
 `;
 
+export const Heading2 = styled.Text`
+  flex: 1;
+  font-size: 12px;
+  text-align: left;
+  padding-left: 20px;
+  font-family: ${theme.FONT_FAMILY.BOLD};
+
+`;
+
 
 export const Cell2 = styled.Text`
+  font-family: ${theme.FONT_FAMILY.REGULAR};
   font-size: 12px;
-  text-align: center;
+  text-align: left;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
   flex: 1;
 `;
 
@@ -156,6 +167,18 @@ export const Row = styled.View`
   flex-direction: row;
   justify-content: space-between;
   margin: 8px 2px;
+  //elevation: 1;
+  border-radius: 3px;
+  border-color: #fff;
+  padding: 1px;
+  background-color: #fff;
+`;
+
+export const Row2 = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 5px;
   //elevation: 1;
   border-radius: 3px;
   border-color: #fff;
