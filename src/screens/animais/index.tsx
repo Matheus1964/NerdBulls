@@ -1,81 +1,106 @@
-import { Header } from '@components/Header'
+import React, { useEffect, useState } from 'react'
 import { FlatList, Alert } from 'react-native'
-import { ButtonText, Container, ContainerTitulo, SelectButton, Title, ButtonContainer, CheckBoxWrapper, ListContainer, HeaderRow, HeaderText, AnimalText } from './styles'
+import { useNavigation } from '@react-navigation/native'
+import { Header } from '@components/Header'
 import logoImg from '@assets/logo.png'
-import React from 'react';
-import {AnimalItem} from './styles';
+import { getDatabase, ref, onValue } from 'firebase/database'
+import { auth } from '../../services/firebaseConfig'
+
+import {
+  ButtonText,
+  Container,
+  ContainerTitulo,
+  SelectButton,
+  Title,
+  ButtonContainer,
+  CheckBoxWrapper,
+  ListContainer,
+  HeaderRow,
+  HeaderText,
+  AnimalText,
+  AnimalItem
+} from './styles'
 import CheckBox from 'react-native-check-box'
 
-interface Animal {
-  id: string;
-  nome: string;
-  sexo: string;
-  raca: string;
-  peso: string;
-}
-
-const animals: Animal[] = [
-  { id: '001', nome: 'Belinha', sexo: 'F', raca: 'Bulldog', peso: '380' },
-  { id: '002', nome: 'Gigi', sexo: 'F', raca: 'Nelore', peso: '490' },
-  { id: '003', nome: 'Julinha', sexo: 'M', raca: 'Angus', peso: '190' },
-  { id: '004', nome: 'Mimosa', sexo: 'F', raca: 'Brahman', peso: '210' },
-  { id: '005', nome: 'Belinha', sexo: 'F', raca: 'Bulldog', peso: '380' },
-  { id: '006', nome: 'Gigi', sexo: 'F', raca: 'Nelore', peso: '490' },
-  { id: '007', nome: 'Julinha', sexo: 'M', raca: 'Angus', peso: '190' },
-  { id: '008', nome: 'Mimosa', sexo: 'F', raca: 'Brahman', peso: '210' },
-  { id: '009', nome: 'Belinha', sexo: 'F', raca: 'Bulldog', peso: '380' },
-  { id: '010', nome: 'Gigi', sexo: 'F', raca: 'Nelore', peso: '490' },
-  { id: '011', nome: 'Julinha', sexo: 'M', raca: 'Angus', peso: '190' },
-  { id: '012', nome: 'Mimosa', sexo: 'F', raca: 'Brahman', peso: '210' },
-];
-
-
 export default function Animais() {
-  const [selectedAnimal, setSelectedAnimal] = React.useState<string>('');
-  
-  //funcao que deve direcionar para a tela do animal
+  const [animals, setAnimals] = useState<any[]>([]) // Aqui estamos usando any[] para simplificar, idealmente, use o tipo correto
+  const [selectedAnimal, setSelectedAnimal] = useState<string>('')
+  const navigation = useNavigation()
+
+  useEffect(() => {
+    const loadAnimals = async () => {
+      try {
+        const currentUser = auth.currentUser // Obter o usuário atualmente autenticado
+        if (!currentUser) {
+          throw new Error('Nenhum usuário autenticado')
+        }
+
+        const db = getDatabase()
+        const animalsRef = ref(db, `users/${currentUser.uid}/animais`)
+
+        onValue(animalsRef, snapshot => {
+          const data = snapshot.val()
+          if (data) {
+            const animalsList = Object.values(data)
+            setAnimals(animalsList)
+          } else {
+            setAnimals([])
+          }
+        })
+      } catch (error) {
+        console.error('Erro ao carregar os animais:', error)
+        Alert.alert('Erro', 'Ocorreu um erro ao carregar os dados dos animais.')
+      }
+    }
+
+    loadAnimals()
+  }, [])
+
   const handleButtonPress = () => {
     if (!selectedAnimal) {
-      Alert.alert('Por favor, selecione um animal.');
+      Alert.alert('Por favor, selecione um animal.')
     } else {
-      console.log('Id Animal:', selectedAnimal);
+      const selected = animals.find(animal => animal.id === selectedAnimal)
+      if (selected) {
+        navigation.navigate('dadosAnimais', { animal: selected })
+      }
     }
-  };
+  }
 
-  const renderItem = ({ item }: { item: Animal }) => {
-    const isChecked = selectedAnimal === item.id;
-  
+  const renderItem = ({ item }: { item: any }) => {
+    const isChecked = selectedAnimal === item.id
+
     return (
       <AnimalItem selected={isChecked}>
         <AnimalText>{item.id}</AnimalText>
         <AnimalText>{item.nome}</AnimalText>
         <AnimalText>{item.sexo}</AnimalText>
         <AnimalText>{item.raca}</AnimalText>
-        <AnimalText>{item.peso}</AnimalText>
+        <AnimalText>{item.pesoNascimento}</AnimalText>
         <CheckBoxWrapper>
           <CheckBox
             isChecked={isChecked}
             onClick={() => {
               if (isChecked) {
-                setSelectedAnimal('');
+                setSelectedAnimal('')
               } else {
-                setSelectedAnimal(item.id);
+                setSelectedAnimal(item.id)
               }
             }}
           />
         </CheckBoxWrapper>
       </AnimalItem>
-    );
+    )
   }
 
   return (
     <>
-      <Header LogoSource={logoImg}/>
+      <Header LogoSource={logoImg} />
       <Container>
         <ContainerTitulo>
           <Title>Escolha um animal</Title>
         </ContainerTitulo>
-        
+
         <ListContainer>
           <HeaderRow>
             <HeaderText>ID</HeaderText>
@@ -89,17 +114,15 @@ export default function Animais() {
           <FlatList
             data={animals}
             renderItem={renderItem}
-            keyExtractor={(item) => item.id}
+            keyExtractor={item => item.id}
           />
         </ListContainer>
-        
 
         <ButtonContainer>
           <SelectButton onPress={() => handleButtonPress()}>
             <ButtonText>Selecionar</ButtonText>
           </SelectButton>
         </ButtonContainer>
-        
       </Container>
     </>
   )
