@@ -1,3 +1,4 @@
+import { Title } from './../animais/styles';
 import styled from 'styled-components/native';
 import theme from '@theme/index';
 
@@ -20,6 +21,13 @@ export const InfoAnimal = styled.Text`
   color: black;
   font-size: ${theme.FONT_SIZE.SM};
   font-family: ${theme.FONT_FAMILY.REGULAR};
+  text-align: left;
+`;
+export const Title_pg = styled.Text`
+  margin-bottom: 15px;
+  color: black;
+  font-size: ${theme.FONT_SIZE.XL};
+  font-family: ${theme.FONT_FAMILY.BOLD};
   text-align: left;
 `;
 
