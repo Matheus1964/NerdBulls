@@ -304,7 +304,7 @@ export default function CadastroAnimais() {
                             return handleChange('raca')(itemValue.value)
                           }
                         }
-                      >
+                        >
                       </Dropdown>
                       {/* <Picker
                         selectedValue={values.raca}
@@ -382,7 +382,7 @@ export default function CadastroAnimais() {
                             return handleChange('sexo')(itemValue.value)
                           }
                         }
-                      >
+                        style={{ marginBottom: 50 }}>
                       </Dropdown>
                       {errors.sexo && touched.sexo && (
                         <ErrorMessage>{errors.sexo}</ErrorMessage>

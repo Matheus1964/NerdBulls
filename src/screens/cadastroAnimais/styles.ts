@@ -93,7 +93,8 @@ export const ButtonOption = styled.View`
   height: 56px;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  margin-top: 20px;
 `;
 
 export const ButtonOptionText = styled.Text`
