@@ -19,7 +19,7 @@ import {
   ModalView,
   TouchableModal
 } from './styles';
-import { Picker } from '@react-native-picker/picker';
+import {Dropdown} from 'react-native-element-dropdown';
 import { getDatabase, ref, push, set, get, child, update } from 'firebase/database';
 import { onAuthStateChanged, auth } from '../../services/firebaseConfig';
 
@@ -179,7 +179,25 @@ export default function CadastroVacina() {
                 <ContainerForm>
                   <ContainerItemForm>
                     <TextLabel>Animal</TextLabel>
-                    <Picker
+                    <Dropdown
+                        labelField="label"
+                        valueField="value"
+                        data={[
+                          {label: "Selecione Animal", value: ""},
+                          ...animais.map(animal => ({
+                            label:animal.nome, value: animal.nome
+                          }))
+                        ]}
+                        value={values.nomeDoAnimal}
+                        onChange={(itemValue) =>
+                          {
+                            console.log(itemValue)
+                            return handleChange('nomeDoAnimal')(itemValue.value)
+                          }
+                        }
+                      >
+                      </Dropdown>
+                     {/* <Picker
                       selectedValue={values.nomeDoAnimal}
                       onValueChange={(itemValue) => {
                         setFieldValue('nomeDoAnimal', itemValue);
@@ -189,7 +207,7 @@ export default function CadastroVacina() {
                       {animais.map(animal => (
                         <Picker.Item key={animal.key} label={animal.nome} value={animal.nome} />
                       ))}
-                    </Picker>
+                    </Picker>  */}
                     {errors.nomeDoAnimal && touched.nomeDoAnimal && (
                       <ErrorMessage>{errors.nomeDoAnimal}</ErrorMessage>
                     )}
@@ -210,18 +228,26 @@ export default function CadastroVacina() {
 
                   <ContainerItemForm>
                     <TextLabel>Nome da vacina</TextLabel>
-                    <Picker
-                      selectedValue={values.vacina}
-                      onValueChange={(itemValue) => setFieldValue('vacina', itemValue)}
-                    >
-                      <Picker.Item label="Nome da vacina" value="" />
-                      <Picker.Item label="Febre Aftosa" value="Febre Aftosa" />
-                      <Picker.Item label="Brucelose" value="Brucelose" />
-                      <Picker.Item label="Raiva" value="Raiva" />
-                      <Picker.Item label="Clostridiose" value="Clostridiose" />
-                      <Picker.Item label="Leptospirose" value="Leptospirose" />
-                      <Picker.Item label="Anaplasmose" value="Anaplasmose" />
-                    </Picker>
+                    <Dropdown
+                        labelField="label"
+                        valueField="value"
+                        data={[
+                          {label: "Nome da vacina", value: ""},
+                          {label: "Febre Aftosa", value: "Febre Aftosa"},
+                          {label: "Brucelose", value: "Brucelose"},
+                          {label: "Raiva", value: "Raiva"},
+                          {label: "Clostridiose", value: "Clostridiose"},
+                          {label: "Leptospirose", value: "Leptospirose"},
+                        ]}
+                        value={values.vacina}
+                        onChange={(itemValue) =>
+                          {
+                            console.log(itemValue)
+                            return handleChange('vacina')(itemValue.value)
+                          }
+                        }
+                      >
+                    </Dropdown>
                     {errors.vacina && touched.vacina && (
                       <ErrorMessage>{errors.vacina}</ErrorMessage>
                     )}
@@ -229,7 +255,27 @@ export default function CadastroVacina() {
 
                   <ContainerItemForm>
                     <TextLabel>Via de administração</TextLabel>
-                    <Picker
+                    <Dropdown
+                        labelField="label"
+                        valueField="value"
+                        data={[
+                          {label: "Selecione a via", value: ""},
+                          {label: "Via Oral", value: "Via Oral"},
+                          {label: "Via Intramuscular", value: "Via Intramuscular"},
+                          {label: "Via Subcutânea", value: "Via Subcutânea"},
+                          {label: "Via Intravenosa", value: "Via Intravenosa"},
+                          {label: "Via Intravenosa", value: "Via Intravenosa"},
+                        ]}
+                        value={values.viaDeAdministracao}
+                        onChange={(itemValue) =>
+                          {
+                            console.log(itemValue)
+                            return handleChange('viaDeAdministracao')(itemValue.value)
+                          }
+                        }
+                      >
+                      </Dropdown>
+                    {/* <Picker
                       selectedValue={values.viaDeAdministracao}
                       onValueChange={(itemValue) => setFieldValue('viaDeAdministracao', itemValue)}
                     >
@@ -238,7 +284,7 @@ export default function CadastroVacina() {
                       <Picker.Item label="Via Intramuscular" value="Via Intramuscular" />
                       <Picker.Item label="Via Subcutânea" value="Via Subcutânea" />
                       <Picker.Item label="Via Intravenosa" value="Via Intravenosa" />
-                    </Picker>
+                    </Picker> */}
                     {errors.viaDeAdministracao && touched.viaDeAdministracao && (
                       <ErrorMessage>{errors.viaDeAdministracao}</ErrorMessage>
                     )}

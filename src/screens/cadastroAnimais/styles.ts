@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import theme from '@theme/index';
-import { Picker } from '@react-native-picker/picker'
+// import { Picker } from '@react-native-picker/picker'
 
 export const Container = styled.View`
   padding-inline: 20px;
@@ -101,9 +101,9 @@ export const ButtonOptionText = styled.Text`
   font-size: ${theme.FONT_SIZE.MD};
 `;
 
-export const PickerField = styled(Picker)`
-  background-color: rgba(255, 255, 255, 1) ;
+// export const PickerField = styled(Picker)`
+//   background-color: rgba(255, 255, 255, 1) ;
   
-  font-size: 16px;
-  color: ${theme.COLORS.GRAY_600};
-`;
+//   font-size: 16px;
+//   color: ${theme.COLORS.GRAY_600};
+// `;

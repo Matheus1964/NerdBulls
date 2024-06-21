@@ -15,12 +15,13 @@ import {
   TextLabel,
   ContainerForm,
   ContainerItemForm,
-  PickerField,
+  // PickerField,
   CenteredView,
   ModalView,
   TouchableModal
 } from './styles'
-import { Picker } from '@react-native-picker/picker'
+import {Dropdown} from 'react-native-element-dropdown';
+
 import { parse, isValid } from 'date-fns'
 import {
   getDatabase,
@@ -285,7 +286,27 @@ export default function CadastroAnimais() {
                     </ContainerItemForm>
                     <ContainerItemForm>
                       <TextLabel>Selecione a raça do animal:</TextLabel>
-                      <Picker
+                      <Dropdown
+                        labelField="label"
+                        valueField="value"
+                        data={[
+                          {label: "Escolha uma raça", value: ""},
+                          {label: "Nelore", value: "Nelore"},
+                          {label: "Holandesa preto e branco", value: "Holandesa preto e branco"},
+                          {label: "Holandesa vermelho e branco", value: "Holandesa vermelho e branco"},
+                          {label: "Mini Gado", value: "Mini Gado"},
+                          {label: "Outro", value: "Outro"},
+                        ]}
+                        value={values.raca}
+                        onChange={(itemValue) =>
+                          {
+                            console.log(itemValue)
+                            return handleChange('raca')(itemValue.value)
+                          }
+                        }
+                      >
+                      </Dropdown>
+                      {/* <Picker
                         selectedValue={values.raca}
                         onValueChange={(itemValue: string) =>
                           handleChange('raca')(itemValue)
@@ -307,7 +328,7 @@ export default function CadastroAnimais() {
                           value="Nelore Pintado Vermelho"
                         />
                         <Picker.Item label="Outro" value="Outro" />
-                      </Picker>
+                      </Picker> */}
                       {errors.raca && touched.raca && (
                         <ErrorMessage>{errors.raca}</ErrorMessage>
                       )}
@@ -346,16 +367,23 @@ export default function CadastroAnimais() {
 
                     <ContainerItemForm>
                       <TextLabel>Selecione o sexo</TextLabel>
-                      <Picker
-                        selectedValue={values.sexo}
-                        onValueChange={(itemValue: string) =>
-                          handleChange('sexo')(itemValue)
+                      <Dropdown
+                        labelField="label"
+                        valueField="value"
+                        data={[
+                          {label: "Escolha um sexo", value: ""},
+                          {label: "Macho", value: "macho"},
+                          {label: "Fêmea", value: "femea"},
+                        ]}
+                        value={values.sexo}
+                        onChange={(itemValue) =>
+                          {
+                            console.log(itemValue)
+                            return handleChange('sexo')(itemValue.value)
+                          }
                         }
                       >
-                        <Picker.Item label="Escolha um sexo" value="" />
-                        <Picker.Item label="Macho" value="macho" />
-                        <Picker.Item label="Fêmea" value="femea" />
-                      </Picker>
+                      </Dropdown>
                       {errors.sexo && touched.sexo && (
                         <ErrorMessage>{errors.sexo}</ErrorMessage>
                       )}

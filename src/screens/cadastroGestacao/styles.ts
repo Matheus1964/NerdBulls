@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import theme from '@theme/index';
-import { Picker } from '@react-native-picker/picker'
+import { Dropdown } from 'react-native-element-dropdown';
 
 export const Container = styled.View`
   padding-inline: 20px;
@@ -68,7 +68,7 @@ export const TextLabel = styled.Text`
 `;
 
 export const InputField = styled.TextInput`
-  background-color: rgba(255, 255, 255, 1) ;
+  background-color: rgba(255, 255, 255, 1);
   border-radius: 5px;
   width: 100%;
   min-width: 300px;
@@ -85,17 +85,15 @@ export const ErrorMessage = styled.Text`
   margin-bottom: 10px;
 `;
 
-
 export const ButtonOption = styled.TouchableOpacity`
   background-color: #2CB859;
   margin: 0;
   border-radius: 5px;
-  width: 300px;
+  width: 390px;
   height: 56px;
   justify-content: center;
   align-items: center;
   align-self: center;
-
 `;
 
 export const ButtonOptionText = styled.Text`
@@ -103,9 +101,14 @@ export const ButtonOptionText = styled.Text`
   font-size: ${theme.FONT_SIZE.MD};
 `;
 
-export const PickerField = styled(Picker)`
-  background-color: rgba(255, 255, 255, 1) ;
-  
+export const PickerField = styled(Dropdown)`
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 5px;
+  width: 100%;
+  min-width: 300px;
+  height: 40px;
+  padding: 10px;
   font-size: 16px;
   color: ${theme.COLORS.GRAY_600};
+  opacity: 0.5;
 `;

@@ -9,7 +9,7 @@ import {
   InputField, ErrorMessage, TextLabel, ContainerForm, ContainerItemForm, 
   PickerField, CenteredView, ModalView, TouchableModal 
 } from './styles';
-import { Picker } from '@react-native-picker/picker';
+import { Dropdown } from 'react-native-element-dropdown';
 import { parse, isValid } from 'date-fns';
 
 interface MyFormValues {
@@ -277,7 +277,25 @@ export default function CadastroGestacao() {
                     
                     <ContainerItemForm>
                       <TextLabel>Escolha a mãe:</TextLabel>
-                      <PickerField
+                      <Dropdown
+                        labelField="label"
+                        valueField="value"
+                        data={[
+                          {label: "Selecionar mãe", value: ""},
+                          ...mães.map(mãe => ({
+                            label:`#${mãe.brinco} ${mãe.nome}`, value: mãe.nome
+                          }))
+                        ]}
+                        value={values.mae}
+                        onChange={(itemValue) =>
+                          {
+                            console.log(itemValue)
+                            return handleChange('mae')(itemValue.value)
+                          }
+                        }
+                      >
+                      </Dropdown>
+                      {/* <PickerField
                         selectedValue={values.mae}
                         onValueChange={handlePickerChange('mae')}
                       >
@@ -285,13 +303,31 @@ export default function CadastroGestacao() {
                         {mães.map(mãe => (
                           <Picker.Item key={mãe.id} label={`#${mãe.brinco} ${mãe.nome}`} value={mãe.nome} />
                         ))}
-                      </PickerField>
-                      {errors.mae && touched.mae && <ErrorMessage>{errors.mae}</ErrorMessage>}
+                      </PickerField>*/}
+                      {errors.mae && touched.mae && <ErrorMessage>{errors.mae}</ErrorMessage>} 
                     </ContainerItemForm>
 
                     <ContainerItemForm>
                       <TextLabel>Escolha o pai:</TextLabel>
-                      <PickerField
+                      <Dropdown
+                        labelField="label"
+                        valueField="value"
+                        data={[
+                          {label: "Selecionar pai", value: ""},
+                          ...pais.map(pai => ({
+                            label:`#${pai.brinco} ${pai.nome}`, value: pai.nome
+                          }))
+                        ]}
+                        value={values.pai}
+                        onChange={(itemValue) =>
+                          {
+                            console.log(itemValue)
+                            return handleChange('pai')(itemValue.value)
+                          }
+                        }
+                      >
+                      </Dropdown>
+                      {/* <PickerField
                         selectedValue={values.pai}
                         onValueChange={handlePickerChange('pai')}
                       >
@@ -299,7 +335,7 @@ export default function CadastroGestacao() {
                         {pais.map(pai => (
                           <Picker.Item key={pai.id} label={`#${pai.brinco} ${pai.nome}`} value={pai.nome} />
                         ))}
-                      </PickerField>
+                      </PickerField> */}
                       {errors.pai && touched.pai && <ErrorMessage>{errors.pai}</ErrorMessage>}
                     </ContainerItemForm>
                     

@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import theme from '@theme/index';
-import { Picker } from '@react-native-picker/picker';
+// import { Dropdown } from 'react-native-element-dropdown';
 
 export const Container = styled.View`
   padding: 30px 30px 0;
@@ -97,11 +97,11 @@ export const ButtonOptionText = styled.Text`
   font-size: ${theme.FONT_SIZE.MD};
 `;
 
-export const PickerField = styled(Picker)`
-  background-color: #F4F4F4;
-  font-size: 16px;
-  color: ${theme.COLORS.GRAY_600};
-`;
+// export const PickerField = styled(Dropdown)`
+//   background-color: #F4F4F4;
+//   font-size: 16px;
+//   color: ${theme.COLORS.GRAY_600};
+// `;
 
 export const ContainerMain = styled.View`
   flex: 1;
