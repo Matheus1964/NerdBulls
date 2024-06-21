@@ -62,115 +62,14 @@ export default function Reproduçao() {
         ],
         gestacao: {
             metodoGestacao: "inseminação artificial",
-            dataParto: "10/05/2024",
+            dataParto: "20/12/2024",
             pai: "Toro Bravo",
             brincoPai: "001",
-            racaPai: "Holandesa",
+            racaPai: "Holandesa vermelho e branco",
             mae: "Margarida",
-            racaMae: "Jersey",
+            racaMae: "Mini Gado",
             vacinasRecebidas: [
-                { nome: "BVD", data: "01/02/2024" },
-                { nome: "IBR", data: "15/03/2024" }
-            ]
-        }
-    },
-    { 
-        id: 2, 
-        brinco: "002", 
-        nome: "Gigi", 
-        sexo: "F", 
-        pesagens: [
-            {"data": "28/02/2024", "peso": 490},
-            {"data": "01/03/2024", "peso": 495},
-            {"data": "02/03/2024", "peso": 488},
-            {"data": "03/03/2024", "peso": 493}
-        ],
-        gestacao: {
-            metodoGestacao: "cobertura natural",
-            dataParto: "20/06/2024",
-            pai: "Valente",
-            brincoPai: "002",
-            racaPai: "Angus",
-            mae: "Daisy",
-            racaMae: "Holandesa",
-            vacinasRecebidas: [
-                { nome: "Clostridial", data: "05/03/2024" },
-                { nome: "Leptospirose", data: "20/04/2024" }
-            ]
-        }
-    },
-    { 
-        id: 3, 
-        brinco: "003", 
-        nome: "Julinha", 
-        sexo: "M", 
-        pesagens: [
-            {"data": "06/12/2023", "peso": 190},
-            {"data": "07/12/2023", "peso": 188},
-            {"data": "08/12/2023", "peso": 191},
-            {"data": "09/12/2023", "peso": 192}
-        ],
-        gestacao: {
-            metodoGestacao: "inseminação artificial",
-            dataParto: "05/07/2024",
-            pai: "Granadeiro",
-            brincoPai: "003",
-            racaPai: "Nelore",
-            mae: "Clarinha",
-            racaMae: "Guernsey",
-            vacinasRecebidas: [
-                { nome: "BVD", data: "02/03/2024" },
-                { nome: "Raiva", data: "12/05/2024" }
-            ]
-        }
-    },
-    { 
-        id: 4, 
-        brinco: "004", 
-        nome: "Julinha", 
-        sexo: "M", 
-        pesagens: [
-            {"data": "22/03/2023", "peso": 210},
-            {"data": "23/03/2023", "peso": 208},
-            {"data": "24/03/2023", "peso": 211},
-            {"data": "25/03/2023", "peso": 209}
-        ],
-        gestacao: {
-            metodoGestacao: "inseminação artificial",
-            dataParto: "15/08/2024",
-            pai: "Raio",
-            brincoPai: "004",
-            racaPai: "Hereford",
-            mae: "Estrela",
-            racaMae: "Ayrshire",
-            vacinasRecebidas: [
-                { nome: "IBR", data: "18/04/2024" },
-                { nome: "Clostridial", data: "25/05/2024" }
-            ]
-        }
-    },
-    { 
-        id: 5, 
-        brinco: "005", 
-        nome: "Lulu", 
-        sexo: "F", 
-        pesagens: [
-            {"data": "15/01/2024", "peso": 420},
-            {"data": "16/01/2024", "peso": 415},
-            {"data": "17/01/2024", "peso": 418},
-            {"data": "18/01/2024", "peso": 422}
-        ],
-        gestacao: {
-            metodoGestacao: "cobertura natural",
-            dataParto: "30/09/2024",
-            pai: "Thunder",
-            brincoPai: "005",
-            racaPai: "Brahman",
-            mae: "Bela",
-            racaMae: "Holandesa",
-            vacinasRecebidas: [
-                { nome: "Leptospirose", data: "01/05/2024" },
-                { nome: "Raiva", data: "20/06/2024" }
+                { nome: "Raiva", data: "21/06/2024" }
             ]
         }
     }

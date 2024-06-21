@@ -5,9 +5,8 @@ import { RouteProp } from '@react-navigation/native';
 import { RootParamList } from './path-to-declaration-file'; // ajuste o caminho conforme necessário
 import { Header } from '@components/Header';
 import logoImg from '@assets/logo.png';
-import { Label, InfoAnimal, Container,Title_pg } from './styles';
-import { ref, get } from 'firebase/database';
-import { database } from '../../services/firebaseConfig'; // ajuste o caminho conforme necessário
+import { Label, InfoAnimal, Container, Title_pg } from './styles';
+import { Vacina } from './types'; // supondo que Vacina esteja definido em um arquivo types
 
 type AnimalDetailsRouteProp = RouteProp<RootParamList, 'dadosAnimais'>;
 
@@ -25,20 +24,13 @@ interface Animal {
   vacinas?: Vacina[]; // Atualização para refletir o campo correto
 }
 
-interface Vacina {
-  id: string;
-  nomeVacina: string;
-  qtAdministrada: string;
-  viaDeAdministracao: string;
-}
-
 const AnimalDetails = () => {
   const route = useRoute<AnimalDetailsRouteProp>();
   const { animal } = route.params;
   const [vacinas, setVacinas] = useState<Vacina[]>([]);
 
   useEffect(() => {
-    if (animal && animal.key) {
+    if (animal && animal.vacinas) {
       console.log('Animal recebido:', animal);
       fetchVacinas(animal.vacinas);
     } else {
@@ -48,16 +40,10 @@ const AnimalDetails = () => {
 
   const fetchVacinas = async (vacinasData: any) => {
     try {
-      const vacinasList: Vacina[] = [];
-
-      // Iterando sobre as chaves de vacinas dentro de vacinasData
-      Object.keys(vacinasData).forEach((vacinaKey) => {
-        const vacina = vacinasData[vacinaKey];
-        vacinasList.push({
-          id: vacinaKey,
-          ...vacina
-        });
-      });
+      const vacinasList: Vacina[] = Object.keys(vacinasData).map((vacinaKey) => ({
+        id: vacinaKey,
+        ...vacinasData[vacinaKey],
+      }));
 
       console.log('Vacinas encontradas:', vacinasList);
       setVacinas(vacinasList);
@@ -67,11 +53,11 @@ const AnimalDetails = () => {
   };
 
   return (
-    <View>
+    <Container>
       <Header LogoSource={logoImg} />
       <ScrollView>
         <Title_pg>Dados do Animal</Title_pg>
-        <Container>
+        <View style={{ paddingHorizontal: 20 }}>
           <Label>Brinco: </Label>
           <InfoAnimal>{animal.brinco}</InfoAnimal>
           <Label>Brinco Eletrônico: </Label>
@@ -88,10 +74,12 @@ const AnimalDetails = () => {
           <InfoAnimal>{animal.pesoNascimento} kg</InfoAnimal>
           <Label>Sexo: </Label>
           <InfoAnimal>{animal.sexo}</InfoAnimal>
-          <Label>Vacinas:</Label>
+        </View>
+        <View style={{ paddingHorizontal: 20, marginTop: 20 }}>
+          <Title_pg>Vacinas</Title_pg>
           {vacinas.length > 0 ? (
-            vacinas.map((vacina, index) => (
-              <View key={vacina.id}>
+            vacinas.map((vacina) => (
+              <View key={vacina.id} style={{ marginBottom: 10 }}>
                 <Label>Nome da Vacina:</Label>
                 <InfoAnimal>{vacina.nomeVacina}</InfoAnimal>
                 <Label>Quantidade Administrada:</Label>
@@ -101,11 +89,11 @@ const AnimalDetails = () => {
               </View>
             ))
           ) : (
-            <Text>Não possui vacinas cadastradas</Text>
+            <Text style={{ marginTop: 10 }}>Não possui vacinas cadastradas</Text>
           )}
-        </Container>
+        </View>
       </ScrollView>
-    </View>
+    </Container>
   );
 };
 
