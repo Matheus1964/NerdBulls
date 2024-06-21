@@ -58,10 +58,10 @@ export default function Acesso() {
       Alert.alert('Sucesso', 'Login realizado com sucesso!');
 
       // Verificar se o tutorial já foi exibido
-      const tutorialShown = await AsyncStorage.getItem('tutorialShown');
+      const tutorialShown = await AsyncStorage.getItem('tutorialShown_' + user.uid); // Usar UID como chave única
       if (!tutorialShown) {
         // Marcar que o tutorial foi exibido
-        await AsyncStorage.setItem('tutorialShown', 'true');
+        await AsyncStorage.setItem('tutorialShown_' + user.uid, 'true');
         navigation.navigate('tutorial');
       } else {
         navigation.navigate('home');
