@@ -55,11 +55,11 @@ export const InputSenha = styled.Text`
 
 export const ButtonRegister = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.COLORS.GREEN_300};
-  width: 398px;
+  width: 360px;
   height: 56px;
   border-radius: 5px;
   justify-content: center;
   align-items: center;
-  margin-left: 5px;
+  margin-left: 10px;
   
 `;

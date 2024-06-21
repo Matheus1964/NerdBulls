@@ -18,7 +18,7 @@ import { Cards } from '@components/Cards';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { cardData } from './mockCards';
 import LogoBoi from '@assets/logoBoi.png';
-import IconGoogleHome from '@assets/IconGoogleHome.png';
+import IconSair from '@assets/sair.png';
 import { auth } from '../../services/firebaseConfig';
 import { getDatabase, ref, onValue } from 'firebase/database';
 
@@ -85,7 +85,7 @@ export default function Home() {
       <SubHeader>
         <LogoHomeBoi source={LogoBoi} />
         <TouchableOpacity onPress={() => setModalVisible(true)}>
-          <IconGoogle source={IconGoogleHome} />
+          <IconGoogle source={IconSair} />
         </TouchableOpacity>
       </SubHeader>
       <CityName>Patos de Minas</CityName>

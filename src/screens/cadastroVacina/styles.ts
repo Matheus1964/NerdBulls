@@ -89,7 +89,7 @@ export const ButtonOption = styled.View`
   background-color: #2CB859;
   margin-left: 10px;
   border-radius: 5px;
-  width: 390px;
+  width: 360px;
   height: 56px;
   justify-content: center;
   align-items: center;
