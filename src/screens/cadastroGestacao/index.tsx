@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from '@components/Header';
 import logoImg from '@assets/logo.png';
 import { ScrollView, Modal, Text, TouchableOpacity } from 'react-native';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { 
-  Container, ContainerTitulo, NameTitulo, ButtonOption, ButtonOptionText, 
-  InputField, ErrorMessage, TextLabel, ContainerForm, ContainerItemForm, 
-  PickerField, CenteredView, ModalView, TouchableModal 
+import {
+  Container, ContainerTitulo, NameTitulo, ButtonOption, ButtonOptionText,
+  InputField, ErrorMessage, TextLabel, ContainerForm, ContainerItemForm,
+  CenteredView, ModalView, TouchableModal
 } from './styles';
 import { Dropdown } from 'react-native-element-dropdown';
 import { parse, isValid } from 'date-fns';
+
+// Import Firebase configuration
+import { 
+  getDatabase, 
+  ref, 
+  push,
+  set,
+  onValue
+} from 'firebase/database';
+import { auth } from '../../services/firebaseConfig'; // Example Firebase configuration
 
 interface MyFormValues {
   brinco: number | string;
@@ -20,8 +30,8 @@ interface MyFormValues {
   pai: string;
   raca: string;
   dataNascimento: string;
-  pesoNascimento: number | string;
   sexo: string;
+  metodoDeGestacao: string;
 }
 
 const initialValues: MyFormValues = {
@@ -30,177 +40,21 @@ const initialValues: MyFormValues = {
   nome: '',
   raca: '',
   dataNascimento: '',
-  pesoNascimento: '',
   sexo: '',
   mae: '',
   pai: '',
+  metodoDeGestacao: '',
 } as MyFormValues;
 
-// Interface JSON
-interface Gestacao {
-  dataParto: string;
-  pai: string;
-  racaPai: string;
-  mae: string;
-  racaMae: string;
-  vacinasRecebidas: Vacina[];
-  metodoGestacao: string;
-  brincoPai: string;
-}
-
-interface DataItem {
-  id: number; 
-  brinco: string; 
+interface Animal {
+  id: number;
+  brinco: string;
   nome: string;
-  sexo: string; 
-  pesagens: { data: string, peso: number }[];
-  gestacao?: Gestacao;
+  sexo: string;
+  raca: string;
+  registro: string;
+  dataNascimento: string;
 }
-
-interface Vacina {
-  nome: string;
-  data: string;
-}
-
-const data: DataItem[] = [
-  { 
-      id: 1, 
-      brinco: "001", 
-      nome: "Belinha", 
-      sexo: "F", 
-      pesagens: [
-          {"data": "26/10/2023", "peso": 380},
-          {"data": "27/10/2023", "peso": 375},
-          {"data": "28/10/2023", "peso": 378},
-          {"data": "29/10/2023", "peso": 382}
-      ],
-      gestacao: {
-          metodoGestacao: "inseminação artificial",
-          dataParto: "10/05/2024",
-          pai: "Toro Bravo",
-          brincoPai: "001",
-          racaPai: "Holandesa",
-          mae: "Margarida",
-          racaMae: "Jersey",
-          vacinasRecebidas: [
-              { nome: "BVD", data: "01/02/2024" },
-              { nome: "IBR", data: "15/03/2024" }
-          ]
-      }
-  },
-  { 
-      id: 2, 
-      brinco: "002", 
-      nome: "Gigi", 
-      sexo: "F", 
-      pesagens: [
-          {"data": "28/02/2024", "peso": 490},
-          {"data": "01/03/2024", "peso": 495},
-          {"data": "02/03/2024", "peso": 488},
-          {"data": "03/03/2024", "peso": 493}
-      ],
-      gestacao: {
-          metodoGestacao: "cobertura natural",
-          dataParto: "20/06/2024",
-          pai: "Valente",
-          brincoPai: "002",
-          racaPai: "Angus",
-          mae: "Daisy",
-          racaMae: "Holandesa",
-          vacinasRecebidas: [
-              { nome: "Clostridial", data: "05/03/2024" },
-              { nome: "Leptospirose", data: "20/04/2024" }
-          ]
-      }
-  },
-  { 
-      id: 3, 
-      brinco: "003", 
-      nome: "Tobias", 
-      sexo: "M", 
-      pesagens: [
-          {"data": "06/12/2023", "peso": 190},
-          {"data": "07/12/2023", "peso": 188},
-          {"data": "08/12/2023", "peso": 191},
-          {"data": "09/12/2023", "peso": 192}
-      ]
-  },
-  { 
-      id: 4, 
-      brinco: "004", 
-      nome: "Brutus", 
-      sexo: "M", 
-      pesagens: [
-          {"data": "22/03/2023", "peso": 210},
-          {"data": "23/03/2023", "peso": 208},
-          {"data": "24/03/2023", "peso": 211},
-          {"data": "25/03/2023", "peso": 209}
-      ]
-  },
-  { 
-      id: 5, 
-      brinco: "005", 
-      nome: "Lulu", 
-      sexo: "F", 
-      pesagens: [
-          {"data": "15/01/2024", "peso": 420},
-          {"data": "16/01/2024", "peso": 415},
-          {"data": "17/01/2024", "peso": 418},
-          {"data": "18/01/2024", "peso": 422}
-      ],
-      gestacao: {
-          metodoGestacao: "cobertura natural",
-          dataParto: "30/09/2024",
-          pai: "Thunder",
-          brincoPai: "005",
-          racaPai: "Brahman",
-          mae: "Bela",
-          racaMae: "Holandesa",
-          vacinasRecebidas: [
-              { nome: "Leptospirose", data: "01/05/2024" },
-              { nome: "Raiva", data: "20/06/2024" }
-          ]
-      }
-  },
-  { 
-      id: 6, 
-      brinco: "006", 
-      nome: "Max", 
-      sexo: "M", 
-      pesagens: [
-          {"data": "12/02/2024", "peso": 310},
-          {"data": "13/02/2024", "peso": 312},
-          {"data": "14/02/2024", "peso": 311},
-          {"data": "15/02/2024", "peso": 313}
-      ]
-  },
-  { 
-      id: 7, 
-      brinco: "007", 
-      nome: "Rocky", 
-      sexo: "M", 
-      pesagens: [
-          {"data": "05/04/2024", "peso": 270},
-          {"data": "06/04/2024", "peso": 272},
-          {"data": "07/04/2024", "peso": 271},
-          {"data": "08/04/2024", "peso": 273}
-      ]
-  },
-  { 
-      id: 8, 
-      brinco: "008", 
-      nome: "Rex", 
-      sexo: "M", 
-      pesagens: [
-          {"data": "19/05/2024", "peso": 350},
-          {"data": "20/05/2024", "peso": 352},
-          {"data": "21/05/2024", "peso": 351},
-          {"data": "22/05/2024", "peso": 353}
-      ]
-  }
-];
-
-
 
 const validationSchema = Yup.object().shape({
   registro: Yup.number().required('O número do registro é obrigatório').positive('O número do registro deve ser um número positivo'),
@@ -213,15 +67,103 @@ const validationSchema = Yup.object().shape({
     }),
   mae: Yup.string().required('A escolha da mãe é obrigatória'),
   pai: Yup.string().required('A escolha do pai é obrigatória'),
+  metodoDeGestacao: Yup.string().required('O método de gestação é obrigatório'),
 });
 
 export default function CadastroGestacao() {
-
   const [modalVisible, setModalVisible] = useState(false);
+  const [mães, setMães] = useState<Animal[]>([]);
+  const [pais, setPais] = useState<Animal[]>([]);
+  const [currentUser, setCurrentUser] = useState<any | null>(null);
 
-  const handleSubmit = (values: any) => {
+  useEffect(() => {
+    // Check current user authentication
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        setCurrentUser(user);
+      } else {
+        setCurrentUser(null);
+      }
+    });
+
+    // Return cleanup function for unsubscribe
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    if (currentUser) {
+      const db = getDatabase();
+      const animalsRef = ref(db, `users/${currentUser.uid}/animais`);
+
+      const fetchData = () => {
+        const listener = onValue(animalsRef, (snapshot) => {
+          const animalsData: Animal[] = [];
+          snapshot.forEach((childSnapshot) => {
+            const animal = childSnapshot.val();
+            animalsData.push({
+              id: animal.id,
+              brinco: animal.brinco,
+              nome: animal.nome,
+              sexo: animal.sexo,
+              raca: animal.raca,
+              registro: animal.registro,
+              dataNascimento: animal.dataNascimento,
+            });
+          });
+
+          const mãesFiltered = animalsData.filter((animal) => animal.sexo === 'femea');
+          const paisFiltered = animalsData.filter((animal) => animal.sexo === 'macho');
+
+          setMães(mãesFiltered);
+          setPais(paisFiltered);
+        });
+
+        // Return function to clean up the listener
+        return () => {
+          off(listener); // Clean up the listener
+        };
+      };
+
+      fetchData();
+    }
+  }, [currentUser]);
+
+  const handleSubmit = async (values: MyFormValues) => {
     console.log(values);
-    setModalVisible(true);
+
+    // Save data to Firebase
+    if (currentUser) {
+      try {
+        const db = getDatabase();
+        const gestacoesRef = ref(db, `users/${currentUser.uid}/gestantes`);
+
+        // Generate a new record with push
+        const newGestacaoRef = push(gestacoesRef);
+
+        // Get the key of the new record
+        const newGestacaoKey = newGestacaoRef.key;
+
+        // Define the values to be saved
+        const gestacaoData = {
+          brinco: values.brinco,
+          registro: values.registro,
+          nome: values.nome,
+          mae: values.mae,
+          pai: values.pai,
+          raca: values.raca,
+          dataNascimento: values.dataNascimento,
+          metodoDeGestacao: values.metodoDeGestacao,
+        };
+
+        // Save data to the specific path with the key of the new record
+        await set(ref(gestacoesRef, newGestacaoKey), gestacaoData);
+
+        setModalVisible(true);
+      } catch (error) {
+        console.error('Erro ao salvar os dados:', error);
+        // Here you can handle the error, displaying a message to the user
+      }
+    }
   };
 
   function handleDataPartoChange(value: string) {
@@ -235,21 +177,13 @@ export default function CadastroGestacao() {
     return formattedText;
   }
 
-  function handleNumber(value: string){
-    const cleanedText = value.replace(/[^0-9]/g, '');
-    return(cleanedText);
-  }
-
-  const mães = data.filter(animal => animal.sexo === 'F');
-  const pais = data.filter(animal => animal.sexo === 'M');
-
   return (
     <>
       <Header LogoSource={logoImg}/>
       <Container>
         <ScrollView>
           <ContainerTitulo>
-              <NameTitulo>Cadastro de Gestação</NameTitulo>
+            <NameTitulo>Cadastro de Gestação</NameTitulo>
           </ContainerTitulo>
           <Formik
             initialValues={initialValues}
@@ -261,20 +195,13 @@ export default function CadastroGestacao() {
                 let formattedValue = value;
                 if (name === 'dataNascimento') {
                   formattedValue = handleDataPartoChange(value);
-                } else if (name === 'brinco' || name === 'registro') {
-                  formattedValue = handleNumber(value);
                 }
                 handleChange(name)(formattedValue);
-              };
-
-              const handlePickerChange = (name: string) => (itemValue: any, itemIndex: number) => {
-                handleChange(name)(itemValue.toString());
               };
 
               return (
                 <>
                   <ContainerForm>
-                    
                     <ContainerItemForm>
                       <TextLabel>Escolha a mãe:</TextLabel>
                       <Dropdown
@@ -283,27 +210,15 @@ export default function CadastroGestacao() {
                         data={[
                           {label: "Selecionar mãe", value: ""},
                           ...mães.map(mãe => ({
-                            label:`#${mãe.brinco} ${mãe.nome}`, value: mãe.nome
+                            label: `#${mãe.brinco} ${mãe.nome}`,
+                            value: mãe.nome
                           }))
                         ]}
                         value={values.mae}
                         onChange={(itemValue) =>
-                          {
-                            console.log(itemValue)
-                            return handleChange('mae')(itemValue.value)
-                          }
+                          handleChange('mae')(itemValue.value)
                         }
-                      >
-                      </Dropdown>
-                      {/* <PickerField
-                        selectedValue={values.mae}
-                        onValueChange={handlePickerChange('mae')}
-                      >
-                        <Picker.Item label="Selecionar mãe" value='' />
-                        {mães.map(mãe => (
-                          <Picker.Item key={mãe.id} label={`#${mãe.brinco} ${mãe.nome}`} value={mãe.nome} />
-                        ))}
-                      </PickerField>*/}
+                      />
                       {errors.mae && touched.mae && <ErrorMessage>{errors.mae}</ErrorMessage>} 
                     </ContainerItemForm>
 
@@ -315,27 +230,15 @@ export default function CadastroGestacao() {
                         data={[
                           {label: "Selecionar pai", value: ""},
                           ...pais.map(pai => ({
-                            label:`#${pai.brinco} ${pai.nome}`, value: pai.nome
+                            label: `#${pai.brinco} ${pai.nome}`,
+                            value: pai.nome
                           }))
                         ]}
                         value={values.pai}
                         onChange={(itemValue) =>
-                          {
-                            console.log(itemValue)
-                            return handleChange('pai')(itemValue.value)
-                          }
+                          handleChange('pai')(itemValue.value)
                         }
-                      >
-                      </Dropdown>
-                      {/* <PickerField
-                        selectedValue={values.pai}
-                        onValueChange={handlePickerChange('pai')}
-                      >
-                        <Picker.Item label="Selecionar pai" value='' />
-                        {pais.map(pai => (
-                          <Picker.Item key={pai.id} label={`#${pai.brinco} ${pai.nome}`} value={pai.nome} />
-                        ))}
-                      </PickerField> */}
+                      />
                       {errors.pai && touched.pai && <ErrorMessage>{errors.pai}</ErrorMessage>}
                     </ContainerItemForm>
                     
@@ -353,8 +256,31 @@ export default function CadastroGestacao() {
                       )}
                     </ContainerItemForm>
                 
+                    <ContainerItemForm>
+                      <TextLabel>Método de gestação</TextLabel>
+                      <Dropdown
+                        labelField="label"
+                        valueField="value"
+                        data={[
+                          { label: "Selecione o método de gestação", value: "" },
+                          { label: "Inseminação Artificial", value: "Inseminação Artificial" },
+                          { label: "Monta Natural", value: "Monta Natural" },
+                          { label: "Transferência de Embriões", value: "Transferência de Embriões" },
+                          { label: "FIV/ICSI", value: "FIV/ICSI" },
+                          { label: "Outro", value: "Outro" },
+                        ]}
+                        value={values.metodoDeGestacao}
+                        onChange={(itemValue) =>
+                          handleChange('metodoDeGestacao')(itemValue.value)
+                        }
+                      />
+                      {errors.metodoDeGestacao && touched.metodoDeGestacao && (
+                        <ErrorMessage>{errors.metodoDeGestacao}</ErrorMessage>
+                      )}
+                    </ContainerItemForm>
+
                   </ContainerForm>
-                  <TouchableOpacity onPress={() => handleSubmit()}>
+                  <TouchableOpacity onPress={handleSubmit}>
                     <ButtonOption>
                       <ButtonOptionText>Cadastrar</ButtonOptionText>
                     </ButtonOption>
@@ -363,28 +289,24 @@ export default function CadastroGestacao() {
               )
             }}
           </Formik>
-
         </ScrollView>
         <Modal
-            animationType="slide"
-            transparent={true}
-            visible={modalVisible}
-            onRequestClose={() => {
-              setModalVisible(!modalVisible);
-            }}
-          >
-            <CenteredView>
-              <ModalView >
-                <Text>Dados salvos com sucesso!</Text>
-                <TouchableModal 
-                  onPress={() => setModalVisible(!modalVisible)}
-                >
-                  <Text>Ok</Text>
-                </TouchableModal>
-              </ModalView>
-            </CenteredView>
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(false);
+          }}
+        >
+          <CenteredView>
+            <ModalView>
+              <Text>Dados salvos com sucesso!</Text>
+              <TouchableModal onPress={() => setModalVisible(false)}>
+                <Text>Ok</Text>
+              </TouchableModal>
+            </ModalView>
+          </CenteredView>
         </Modal>
-
       </Container>
     </>
   );
